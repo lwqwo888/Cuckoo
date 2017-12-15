@@ -14,9 +14,6 @@ import base64
 import requests
 import re
 import Queue
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 def md5(str):
     # digest()作为二进制数据字符串值
@@ -48,25 +45,11 @@ params = {
     "xml": string_message,
     "verifyCode": result
 }
-res = requests.post(url,data=params).content
-print res
-pattern = re.compile(r'<Route remark="(.*?)"', re.S)
-n = pattern.findall(res)
-pattern = re.compile(r'accept_time="(.*?)"', re.S)
-t = pattern.findall(res)
-sf_list = [i for i in zip(n, t)]
-print sf_list
-for i in sf_list:
-    sum = i[0] + '\n' + i[1]
-    data_queue.put(sum)
-while not data_queue.empty():
-    with open("顺丰信息.txt","a") as f:
-        f.write(data_queue.get() + '\n')
-
-
-
-
-
-
-
-
+res = requests.post(url,data=params)
+print res.content
+pattern = re.compile(r'<Route remark="(.*?)",accept_time="(.*?)"', re.S)
+m = pattern.findall(res.content)
+print m
+for i in m:
+    with open("顺丰信息1.txt","a") as f:
+        f.write(i+'\n')
