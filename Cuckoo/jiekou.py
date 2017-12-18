@@ -52,6 +52,9 @@ res = requests.post(url,data=params).content
 print res
 pattern = re.compile(r'<Route remark="(.*?)"', re.S)
 n = pattern.findall(res)
+print(type(n))
+if n == []:
+    print 66666666
 pattern = re.compile(r'accept_time="(.*?)"', re.S)
 t = pattern.findall(res)
 sf_list = [i for i in zip(n, t)]

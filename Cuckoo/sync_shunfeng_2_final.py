@@ -88,7 +88,7 @@ class Sync:
         cursor.close()
         for d in data:
             self.queue.put(d)
-
+# 暂时不用
     def all(self):
         """更新2个月内:所有数据"""
         d = datetime.datetime.now()
@@ -110,7 +110,7 @@ class Sync:
         cursor.close()
         for d in data:
             self.queue.put(d)
-
+# 暂时不用
     def empty(self):
         """更新2个月内:所有空状态数据"""
         cursor = self.connection.cursor()
@@ -369,7 +369,7 @@ class SyncStatusThread(threading.Thread):
             url = "http://218.16.117.83:8033/APIQuery.aspx?TrackNum=" + item['track_number']
             res = requests.get(url)
             html = res.content
-	    bindIpObj.changeIp("")
+	    bindIpObj.changeIp("") # ??????????????????????????????
             status_id = send_date(getstat, logistics_time, track, ' ', '(51)', '').acquire_date_id()
             res_tab = r'<ishaspod>(.*?)</ishaspod>'
             stat = re.findall(res_tab, html, re.S | re.M)[0]
@@ -407,7 +407,7 @@ class SyncStatusThread(threading.Thread):
                         for tran_status_item in tran_status:
                             # 移除字符串首尾空格
                             if tran_status_item['status_label'].strip() in getstat:
-                                tran_status_label = tran_status_item['status_label']
+                                tran_ssynctatus_label = tran_status_item['status_label']
                                 break
                             else:
                                 tran_status_label = getstat
@@ -477,7 +477,7 @@ def main():
         if single:
             # 给类方法传递运单号参数,然后运行抓取程序
             sync.single(single)
-        # 如果运行模式为随机时间,同样运行抓取程序
+        # 如果运行模式为时间范围模式,同样运行抓取程序
         if run_mode == 'time_range':
             sync.time_start = time_start
             sync.time_end = time_end
@@ -489,7 +489,7 @@ def main():
         sync.log(traceback.print_exc())
     finally:
         os.path.exists()
-        # 用于判断变量、文件等是否存在,返回布尔类型
+        # 用于判断文件、文件夹等是否存在,返回布尔类型
         if os.path.exists(lock_file):
             # 删除指定路径的文件
             os.remove(lock_file)
