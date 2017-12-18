@@ -33,7 +33,7 @@ string_message = """
                 <RouteRequest
                 tracking_type="1"
                 method_type="1"
-                tracking_number="172249304966"/>
+                tracking_number="172249304967"/>
             </Body>
     </Request>
 """
@@ -58,14 +58,9 @@ if n == []:
 pattern = re.compile(r'accept_time="(.*?)"', re.S)
 t = pattern.findall(res)
 sf_list = [i for i in zip(n, t)]
-print sf_list
-for i in sf_list:
-    sum = i[0] + '\n' + i[1]
-    data_queue.put(sum)
-while not data_queue.empty():
-    with open("顺丰信息.txt","a") as f:
-        f.write(data_queue.get() + '\n')
-
+for i,j in sf_list:
+    status = i
+    time = j
 
 
 

@@ -13,9 +13,19 @@ import re
 import datetime
 
 import ChangeIp
+
 from cat_date import send_date
 
 reload(sys)
+from dateutil.parser import parse
+
+def mix_commontime(t):
+    '''
+    :param t:输入你想要的解析的文件格式
+    :return:
+    '''
+    return parse(t).strftime('%Y-%m-%d %H:%M:%S')
+
 sys.setdefaultencoding('utf-8')
 
 summary_status    = ''
@@ -24,10 +34,10 @@ logistics_time    = ''
 tran_status_label = ''
 try:
     start_time = time.time()
-    bindIpObj= ChangeIp.bindIp()
-    bindIpObj. randomIp()
-    print '当前IP：%s  总IP：%s' % (str(bindIpObj.getIp()),str(bindIpObj.getIpsCount()))
-    bindIpObj. changeIp(bindIpObj.getIp())
+    # bindIpObj= ChangeIp.bindIp()
+    # bindIpObj. randomIp()
+    # print '当前IP：%s  总IP：%s' % (str(bindIpObj.getIp()),str(bindIpObj.getIpsCount()))
+    # bindIpObj. changeIp(bindIpObj.getIp())
 
     date_month = str(datetime.datetime.now().month)
     date_day = str(datetime.datetime.now().day)
@@ -44,6 +54,9 @@ try:
     if 7 < date_hour < 17:
         filename = os.path.abspath('.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '07' + '.txt'
         file_handler = open(filename.decode('utf-8'), 'wb')
+    elif 4 < date_hour < 7:
+        filename = os.path.abspath('.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '04' + '.txt'
+        file_handler = open(filename.decode('utf-8'), 'wb')
     else:
         filename = os.path.abspath('.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '17' + '.txt'
         file_handler = open(filename.decode('utf-8'), 'a').write
@@ -56,11 +69,16 @@ try:
 
     bufsize = 1024
 
-    if 7 < date_hour < 25:
+    if 7 < date_hour < 17:
         filename = os.path.abspath(
             '.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '07' + '.txt'
         file_handler = open(filename.decode('utf-8'), 'a').write
         ftp.retrbinary("RETR /Receive/cuc" + date_month + date_day + "07.SOD", file_handler, bufsize)
+    elif 4 < date_hour < 7:
+        filename = os.path.abspath(
+            '.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '04' + '.txt'
+        file_handler = open(filename.decode('utf-8'), 'a').write
+        ftp.retrbinary("RETR /Receive/cuc" + date_month + date_day + "04.NOD", file_handler, bufsize)
     else:
         filename = os.path.abspath('.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '17' + '.txt'
         file_handler = open(filename.decode('utf-8'), 'a').write
@@ -69,28 +87,30 @@ try:
 
     with open(filename.decode('utf-8'), 'rb') as f:
         lines = f.readlines()
-    bindIpObj.changeIp('')
+    # bindIpObj.changeIp('')
     for line in lines:
         re_track = re.compile(r'(\d{5,20})\|(.*)')
         logistics_time = ''.join(line.replace("\r\n", "").split('|')[-5:-4])
         track = re.search(re_track, line).group(1)
 
         status_id = send_date(status, logistics_time, track, ' ', '(27)', '').acquire_date_id()
-        if status_id:
-            print status_id
-            logistics_time = logistics_time[0:4] + '-' + logistics_time[4:6] + '-' + logistics_time[6:8] + ' ' + logistics_time[8:10] + ':' + logistics_time[10:12] + ':' + logistics_time[12:14]
-            status = line[line.replace("\r\n", "")[:-2].rfind("|") + 1:-1].replace('|', '').replace('\r', '').decode("big5").strip()
-            print logistics_time
-            tran_status = send_date(status, logistics_time, track, summary_status, '(27)', '').acquire_date()
-            if tran_status:
-                for tran_status_item in tran_status:
-                    if tran_status_item['status_label'].strip() in status:
-                        tran_status_label = tran_status_item['status_label']
+        # if status_id:
+        # print status_id
+        logistics_time = mix_commontime(logistics_time)
+        status = line[line.replace("\r\n", "")[:-2].rfind("|") + 1:-1].replace('|', '').replace('\r', '').decode("big5").strip().replace(' (PP)|', '')
+        print logistics_time
+        tran_status = send_date(status, logistics_time, track, summary_status, '(27)', '').acquire_date()
 
-                        break
-                    else:
-                        tran_status_label = status
-                send_date(status, logistics_time, track, ' ', str(status_id[0]['id_shipping']),tran_status_label).insert_date()
+
+        if tran_status:
+            for tran_status_item in tran_status:
+                if tran_status_item['status_label'].strip() in status:
+                    tran_status_label = tran_status_item['status_label']
+
+                    break
+                else:
+                    tran_status_label = status
+            send_date(status, logistics_time, track, ' ', str(status_id[0]['id_shipping']),tran_status_label).insert_date()
         else:
             pass
         print '%s --- %s' % (track,status)

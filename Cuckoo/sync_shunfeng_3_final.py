@@ -196,7 +196,9 @@ class Sync(object):
         print((u"开始抓取：%s，共：%s个，模式：%s")%(time.strftime("%Y-%m-%d %H:%M:%S"), total,self.mode))
         threads = []
         for idx in range(self.thread_count):
+            # 把Sync传给了SyncStatusThread类？
             thread = SyncStatusThread(self)
+            # 类对象.start()？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
             thread.start()
             threads.append(thread)
 
@@ -278,7 +280,7 @@ class SyncStatusThread(object,threading.Thread):
         # 概要——状态？？？
         summary_status = ''
         getstat = ''
-        # 后勤时间？？？？？
+        # 物流时间
         logistics_time = ''
         track = item['track_number']
         # 字典键值为对应数据库的字段
@@ -330,7 +332,7 @@ class SyncStatusThread(object,threading.Thread):
             status_id = send_date(getstat, logistics_time, track, ' ', '(51)').acquicre_date_id()
             pattern = re.compile(r'<Route remark="(.*?)"', re.S)
             n = pattern.findall(res)
-
+            # n为物流轨迹信息，t为对应物流信息的时间点
             if n == []:
                 getstat = '未上线'
                 logistics_time = ''
@@ -339,6 +341,21 @@ class SyncStatusThread(object,threading.Thread):
             else:
                 pattern = re.compile(r'accept_time="(.*?)"', re.S)
                 t = pattern.findall(res)
+                sf_list = [i for i in zip(n, t)]
+                print sf_list
+                for i, j in sf_list:
+                    getstat = i
+                    logistics_time = j
+                tran_status = send_date(getstat, logistics_time, track, summary_status, '(51)','').acquire_date()
+            result['status'] = getstat
+            result['time'] = logistics_time
+            print '%s --- %s --- %s' % (
+                result['track'], result['status'], result['time'])
+            return result
+
+        except Exception, e:
+            print e
+        return "程序错误"
 
 
 def main():
@@ -351,7 +368,7 @@ def main():
         # traceback模块被用来跟踪异常返回信息,traceback.print_exc()打印到屏幕
         traceback.print_exc()
         sys.exit(1)
-    # 40条线程数
+    # 默认不指定线程数量情况下为40条线程
     thread_count = 40
     # 所有信息初始化为空字符串
     db_name = db_user = db_passwd = ''
@@ -369,7 +386,7 @@ def main():
         if o in ('-t', '--thread_count'):
             thread_count = int(v)
         if o in ('-s', '--single'):
-            # 运单号
+            # 单个运单号
             single = v.strip()
         if o in ('-l'):
             run_mode = 'time_range'
@@ -390,7 +407,7 @@ def main():
                 mode=run_mode, thread_count=thread_count)
     try:
         if single:
-            # 给类方法传递运单号参数,然后运行抓取程序
+            # 给类方法传递运单个运单号参数,然后运行抓取程序
             sync.single(single)
         # 如果运行模式为时间范围模式就以时间范围模式运行抓取程序
         if run_mode == 'time_range':
