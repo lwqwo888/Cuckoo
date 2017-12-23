@@ -61,8 +61,11 @@ sf_list = [i for i in zip(n, t)]
 for i,j in sf_list:
     status = i
     time = j
+<<<<<<< HEAD
     print i
     print j
+=======
+>>>>>>> 75a0fcc1784506da036e6d9912e91fc22a383574
 
 
 

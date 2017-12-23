@@ -14,7 +14,11 @@ import datetime
 
 import ChangeIp
 
+<<<<<<< HEAD
 # from cat_date import send_date
+=======
+from cat_date import send_date
+>>>>>>> 75a0fcc1784506da036e6d9912e91fc22a383574
 
 reload(sys)
 from dateutil.parser import parse
@@ -52,6 +56,7 @@ try:
     else:
         date_day = date_day
     if 7 < date_hour < 17:
+<<<<<<< HEAD
         filename = os.path.abspath('.') + os.sep + 'data' + os.sep + date_month + '_' + date_day + '_' + '07' + '.txt'
         file_handler = open(filename.decode('utf-8'), 'wb')
     elif 4 < date_hour < 7:
@@ -59,6 +64,15 @@ try:
         file_handler = open(filename.decode('utf-8'), 'wb')
     else:
         filename = os.path.abspath('.') + os.sep + 'data' + os.sep + date_month + '_' + date_day + '_' + '17' + '.txt'
+=======
+        filename = os.path.abspath('.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '07' + '.txt'
+        file_handler = open(filename.decode('utf-8'), 'wb')
+    elif 4 < date_hour < 7:
+        filename = os.path.abspath('.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '04' + '.txt'
+        file_handler = open(filename.decode('utf-8'), 'wb')
+    else:
+        filename = os.path.abspath('.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '17' + '.txt'
+>>>>>>> 75a0fcc1784506da036e6d9912e91fc22a383574
         file_handler = open(filename.decode('utf-8'), 'a').write
 
     ftp = FTP()
@@ -71,16 +85,28 @@ try:
 
     if 7 < date_hour < 17:
         filename = os.path.abspath(
+<<<<<<< HEAD
             '.') + os.sep + 'data' + os.sep + date_month + '_' + date_day + '_' + '07' + '.txt'
+=======
+            '.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '07' + '.txt'
+>>>>>>> 75a0fcc1784506da036e6d9912e91fc22a383574
         file_handler = open(filename.decode('utf-8'), 'a').write
         ftp.retrbinary("RETR /Receive/cuc" + date_month + date_day + "07.SOD", file_handler, bufsize)
     elif 4 < date_hour < 7:
         filename = os.path.abspath(
+<<<<<<< HEAD
             '.') + os.sep + 'data' + os.sep + date_month + '_' + date_day + '_' + '04' + '.txt'
         file_handler = open(filename.decode('utf-8'), 'a').write
         ftp.retrbinary("RETR /Receive/cuc" + date_month + date_day + "04.NOD", file_handler, bufsize)
     else:
         filename = os.path.abspath('.') + os.sep + 'data' + os.sep + date_month + '_' + date_day + '_' + '17' + '.txt'
+=======
+            '.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '04' + '.txt'
+        file_handler = open(filename.decode('utf-8'), 'a').write
+        ftp.retrbinary("RETR /Receive/cuc" + date_month + date_day + "04.NOD", file_handler, bufsize)
+    else:
+        filename = os.path.abspath('.') + os.sep + 'date' + os.sep + date_month + '_' + date_day + '_' + '17' + '.txt'
+>>>>>>> 75a0fcc1784506da036e6d9912e91fc22a383574
         file_handler = open(filename.decode('utf-8'), 'a').write
         ftp.retrbinary("RETR /Receive/cuc" + date_month + date_day + "17.SOD", file_handler, bufsize)
     # filename = os.path.abspath('.')+os.sep+'date'+os.sep+'10'+'_'+'20'+'_'+'07'+'.txt'
