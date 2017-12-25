@@ -13,6 +13,7 @@ import hashlib
 import base64
 import requests
 import json
+import datetime
 import re
 import Queue
 # DES加密CBC模式
@@ -23,43 +24,51 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-def md5(str):
-    # digest()作为二进制数据字符串值
-    m = hashlib.md5(str).hexdigest()
-        # digest()
-    print m
-    return m
-data_queue = Queue.Queue()
 track_number = ''
 
 # AESCrypto.cbc_encrypt()
-key_str = ''
-Des_Key = "BHC#@*UM" # Key
-Des_IV = " VKXHKJVG" # 自定IV向量
+xml_str = '''<?xml version="1.0" encoding="utf-8"?><qrylist><order orderid="6703093320"></order></qrylist>'''
+# Des_Key = "BHC#@*UM" # Key
+now = datetime.datetime.now()
+delta = datetime.timedelta(days=40)
+n_days = now + delta
+gold_key = n_days.strftime('%Y%m%d')
+print 'money',gold_key
+
+IV = "VKXHKJVG" # 自定IV向量
+
+str = xml_str + str(gold_key) + IV
+str = str.encode('utf-8')
+pad = 8-(len(str) % 8)
+repeat = pad * chr(pad)
+print type(repeat)
+print 'repeat',repeat.encode('utf-8')
+str = xml_str + repeat
+print 'str',str
+print 'pad',pad
+
 def DesEncrypt(str):
-    k = des(Des_Key, CBC, Des_IV, pad=None, padmode=PAD_PKCS5)
+    k = des("DESCRYPT", CBC, IV)
     EncryptStr = k.encrypt(str)
     return base64.b64encode(EncryptStr) #转base64编码返回
+
 key_str = DesEncrypt(str)
+print key_str
 
 url = """https://www.hct.com.tw/phone/searchGoods_Main.aspx?no=""" + key_str +"""&v=7856A92C813BFEE003AAEB434545ACC3"""
-params = {
-    "awb": str
-}
-
 print 666
-res = requests.post(url,data=params).content.decode('unicode-escape')
+res = requests.post(url).content.encode('utf-8')
 print res
 print type(res)
-pattern = re.compile(r'"status":"(.*?)"', re.S)
-status = pattern.findall(res)
-print status
-if status == []:
-    getstat = '未找到'
+# pattern = re.compile(r'"status":"(.*?)"', re.S)
+# status = pattern.findall(res)
+# print status
+# if status == []:
+#     getstat = '未找到'
+#
+# else:
+#     getstat = status
+for i in res:
 
-else:
-    getstat = status
-for i in getstat:
-
-    with open("J&T信息1.txt","a") as f:
+    with open("新竹信息1.txt","a") as f:
         f.write(i+'\n')
