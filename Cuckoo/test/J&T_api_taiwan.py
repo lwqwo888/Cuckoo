@@ -28,24 +28,30 @@ def main():
     }
     params = json.dumps(params,ensure_ascii=False)
     json_object = json.loads(params)
-    print 666
     res = requests.post(url,data=params).content.decode('unicode-escape')
-    print res
-    print type(res)
-    pattern = re.compile(r'"status":"(.*?)"', re.S)
-    status = pattern.findall(res)
-    print "status",status
-    if status == []:
+    all_status = re.compile(r'"status":"(.*?)"', re.S)
+    all_time = re.compile(r'"date_time":"(.*?)"', re.S)
+    status_list = all_status.findall(res)
+    datetime_list = all_time.findall(res)
+    print "status",all_status
+    if all_status == []:
         getstat = '未找到'
-
+        gettime = '未找到'
     else:
-        yinni_getstat = status[-1]
-        print yinni_getstat
-        yinni_getstat = yinni_getstat.replace(' ', '').lower()
-        getstat = Control(yinni_getstat)
-
-    with open("J&T信息1.txt","a") as f:
-            f.write(getstat+'\n')
+        J_and_T_list = [i for i in zip(status_list, datetime_list)]
+        for i, j in J_and_T_list:
+            str_time = j.split(' ')
+            time_list = str_time[0].split('-')[::-1]
+            month_num = month_func(time_list[1])
+            gettime = time_list[0] + '-' + month_num + '-' + time_list[2] + ' ' + str_time[1]
+            print "gettime:   ", gettime
+            print 'getstat:   ', i
+        # print yinni_getstat
+        # yinni_getstat = yinni_getstat.replace(' ', '').lower()
+        # getstat = Control(yinni_getstat)
+    # for i in getstat:
+    #     with open("J&T信息1.txt","a") as f:
+    #             f.write(i+'\n')
 
 def Control(yn_str):
     # 派件
@@ -95,7 +101,57 @@ def Control(yn_str):
         zh_str = yn_str + ': J&T技术未给出此状态'
     return zh_str
 
-def str_process( str):
+# def month_func(str):
+#     print '月份: ',str
+#     if str == 'JAN':
+#         month_num = '01'
+#     elif str == 'FEB':
+#         month_num = '02'
+#     elif str == 'MAR':
+#         month_num = '03'
+#     elif str == 'APR':
+#         month_num = '04'
+#     elif str == 'MAY':
+#         month_num = '05'
+#     elif str == 'JUN':
+#         month_num = '06'
+#     elif str == 'JUL':
+#         month_num = '07'
+#     elif str == 'AUG':
+#         month_num = '08'
+#     elif str == 'SEP':
+#         month_num = '09'
+#     elif str == 'OCT':
+#         month_num = '10'
+#     elif str == 'NOV':
+#         month_num = '11'
+#     elif str == 'DEC':
+#         month_num = '12'
+#     else:
+#         print '未知月份'
+#     return month_num
+
+def month_func(mth):
+    swtich = {
+        'JAN': '01',
+        'FEB': '02',
+        'MAR': '03',
+        'APR': '04',
+        'MAY': '05',
+        'JUN': '06',
+        'JUL': '07',
+        'AUG': '08',
+        'SEP': '09',
+        'OCT': '10',
+        'NOV': '11',
+        'DEC': '12',
+
+    }
+    return swtich.get(mth, '00')
+
+
+
+def str_process(str):
     new_str = str.replace(' ', '').lower()
     return new_str
 
