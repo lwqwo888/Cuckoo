@@ -9,7 +9,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-track_number = '6821011923'# 6702527985   6703093320
+track_number = '6702527985'# 6702527985   6703093320
 # track_number = track_number
 
 now = datetime.datetime.now()
@@ -41,9 +41,12 @@ if len(bs4_res) == 0:
         f.write(getstat + '\n' + gettime + '\n')
 else:
     for i in bs4_res:
-        getstat = i.get_text().strip().replace('\r', '').replace('\n', '').replace('\t', '').replace('/', '-')[:16]
-        getstat += ':00'
-        gettime = i.get_text().strip().replace('\r', '').replace('\n', '').replace('\t', '')[16:]
+        gettime = i.get_text().strip().replace('\r', '').replace('\n', '').replace('\t', '').replace('/', '-')[:16]
+        gettime += ':00'
+        getstat = i.get_text().strip().replace('\r', '').replace('\n', '').replace('\t', '')[16:]
+
+        print 's--------',getstat
+        print 't--------',gettime
         # 以下2行测试使用******************************************************************
         with open("新竹信息1.txt","a") as f:
             f.write(getstat + '\n' + gettime + '\n')

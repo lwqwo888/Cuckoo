@@ -5,7 +5,6 @@ import sys
 import os
 import threading
 import time
-<<<<<<< HEAD
 import datetime
 import urllib
 import urllib2
