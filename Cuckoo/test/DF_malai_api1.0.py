@@ -24,12 +24,16 @@ if all_length > 1:
     for i in range(all_length):
         i += 1
         num = str(i)
-        status_list = html.xpath(('''//html/body/form[@id='form1']/center/div/table[@class='HtmlText'][last()]/tr[@align="left"][%s]/td[4]/div/text()''')%num)
+        status_list = html.xpath(('''//html/body/form[@id='form1']/center/div/table[@class='HtmlText'][last()]/
+        tr[@align="left"][%s]/td[4]/div/text()''')%num)
         status = status_list[0].replace('\r', '').replace('\n', '').replace('\t', '').strip()
-        time_list1 = html.xpath(('''//html/body/form[@id='form1']/center/div/table[@class='HtmlText'][last()]/tr[@align="left"][%s]/td[1]/div/text()''')%num)
-        time_list2 = html.xpath(('''//html/body/form[@id='form1']/center/div/table[@class='HtmlText'][last()]/tr[@align="left"][%s]/td[2]/div/text()''')%num)
+        time_list1 = html.xpath(('''//html/body/form[@id='form1']/center/div/table[@class='HtmlText'][last()]/
+        tr[@align="left"][%s]/td[1]/div/text()''')%num)
+        time_list2 = html.xpath(('''//html/body/form[@id='form1']/center/div/table[@class='HtmlText'][last()]/
+        tr[@align="left"][%s]/td[2]/div/text()''')%num)
         logistics_time = time_list1[0].replace('\r', '').replace('\n', '').replace('\t', '').replace(' ', '') + ' '\
                          + time_list2[0].replace('\r', '').replace('\n', '').replace('\t', '').replace(' ', '')
+        # 以下2行测试使用******************************************************************
         print logistics_time
         print status
 else:

@@ -7,10 +7,9 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 def main():
-    url = "http://202.159.30.42:22223/jandt_web/szcuckoo/trackingAction!tracking.action"
+    url = "http://jk.jet.co.id:22261/jant_szcuckoo_web/szcuckoo/trackingAction!tracking.action"
 
     params = {
-        # "awb": "JK0000000010"
         "awb": track_number
     }
     params = json.dumps(params,ensure_ascii=False)
@@ -20,26 +19,23 @@ def main():
     all_time = re.compile(r'"date_time":"(.*?)"', re.S)
     status_list = all_status.findall(res)
     datetime_list = all_time.findall(res)
-    getstat = '未找到'
-    gettime = '未找到'
-    if status_list == []:
-        getstat = getstat
-        gettime = gettime
-        # 以下2行测试使用******************************************************************
-        with open("J&T信息1.txt","a") as f:
-                f.write(gettime+'\n'+getstat+'\n')
-    else:
+
+    if datetime_list:
         J_and_T_list = [i for i in zip(status_list, datetime_list)]
-        for i, j in J_and_T_list:
+        for status, j in J_and_T_list:
             str_time = j.split(' ')
             time_list = str_time[0].split('-')[::-1]
             month_num = month_func(time_list[1])
-            gettime = time_list[0] + '-' + month_num + '-' + time_list[2] + ' ' + str_time[1]
+            logistics_time = time_list[0] + '-' + month_num + '-' + time_list[2] + ' ' + str_time[1]
             # 以下四行测试使用******************************************************************
-            gettime = gettime
-            getstat = i
-            with open("J&T信息1.txt","a") as f:
-                    f.write(gettime+'\n'+getstat+'\n')
+            # print logistics_time
+            # print status
+    else:
+        status = '未找到'
+        logistics_time = '未找到'
+        # 以下2行测试使用******************************************************************
+        # print logistics_time
+        # print status
 
 def month_func(mth):
     swtich = {

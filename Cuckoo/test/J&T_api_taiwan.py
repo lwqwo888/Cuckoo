@@ -21,31 +21,36 @@ sys.setdefaultencoding('utf-8')
 
 def main():
     data_queue = Queue.Queue()
-    url = "http://202.159.30.42:22223/jandt_web/szcuckoo/trackingAction!tracking.action"
+    # url = "http://jk.jet.co.id:22232/jandt_web/order/orderAction!createOrder.action"
+    url = "http://jk.jet.co.id:22261/jant_szcuckoo_web/szcuckoo/trackingAction!tracking.action"
 
     params = {
-        "awb": "JK0000000010"
+        "awb": "JK0000000655"
     }
     params = json.dumps(params,ensure_ascii=False)
     json_object = json.loads(params)
     res = requests.post(url,data=params).content.decode('unicode-escape')
+    # print res
     all_status = re.compile(r'"status":"(.*?)"', re.S)
     all_time = re.compile(r'"date_time":"(.*?)"', re.S)
     status_list = all_status.findall(res)
     datetime_list = all_time.findall(res)
-    print "status",all_status
-    if all_status == []:
-        getstat = '未找到'
-        gettime = '未找到'
-    else:
+    # print datetime_list
+
+    if datetime_list:
         J_and_T_list = [i for i in zip(status_list, datetime_list)]
-        for i, j in J_and_T_list:
+        for status, j in J_and_T_list:
             str_time = j.split(' ')
             time_list = str_time[0].split('-')[::-1]
             month_num = month_func(time_list[1])
-            gettime = time_list[0] + '-' + month_num + '-' + time_list[2] + ' ' + str_time[1]
-            print "gettime:   ", gettime
-            print 'getstat:   ', i
+            logistics_time = time_list[0] + '-' + month_num + '-' + time_list[2] + ' ' + str_time[1]
+            print "logistics_time:   ", logistics_time
+            print 'status:   ', status
+    else:
+        status = '未找到'
+        logistics_time = '未找到'
+        print logistics_time
+        print status
         # print yinni_getstat
         # yinni_getstat = yinni_getstat.replace(' ', '').lower()
         # getstat = Control(yinni_getstat)
