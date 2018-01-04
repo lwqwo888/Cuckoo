@@ -13,7 +13,7 @@ url = 'http://113.105.65.70:8032/query.aspx'
 params = {
     '__VIEWSTATE': '/wEPDwUKMTg2MTYyMDc5M2RkjCDPEC/ksTqq44KYqvtadq7XLC4=',
     '__EVENTVALIDATION': '/wEWAwKi0rjlDwKvgcuQCQKM54rGBuq0mYrzxG6dbfcTTEtuhzTz4r+/',
-    'TrackNum': '114502774223',
+    'TrackNum': '114502789973',
     'Button1': '追踪',
 }
 json_data = requests.post(url, data=params).text
