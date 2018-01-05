@@ -1,0 +1,27 @@
+2017-12-18 14:00:00
+FD
+SuccessfullyDelivered
+2017-12-11 18:32:00
+DF
+DeliveryFailed
+2017-12-11 10:42:39
+AL2
+BranchOutboundinDeliveryBranch
+2017-12-10 19:25:00
+DF
+DeliveryFailed
+2017-12-10 11:51:30
+AL2
+BranchOutboundinDeliveryBranch
+2017-11-22 11:10:02
+AL1
+BranchInboundinDeliveryBranch
+2017-11-21 07:43:33
+DT2
+HubOutbound
+2017-11-21 07:34:02
+DT2
+HubOutbound
+2017-11-21 07:12:56
+AT1
+PickupInbound

@@ -65,40 +65,40 @@ class SyncStatusThread(object):
     def control(self, yn_str):
         # 订单处理中
         if self.str_process('Manifes') in yn_str:
-            zh_str = '订单处理中'
+            zh_str = 'Manifes'
         # 发件 'Paket akan dikirimkan ke & 网点名称':
         elif self.str_process('Paket akan dikirimkan ke') in yn_str:
-            zh_str = '发件'
+            zh_str = 'Paket akan dikirimkan ke + 网点名称'
         # 收件 'Paket telah diterima oleh & 网点名称'
         elif self.str_process('Paket telah diterima oleh') in yn_str:
-            zh_str = '收件'
+            zh_str = 'Paket telah diterima oleh + 网点名称'
         # 到件 'Paket telah sampai di & 网点名称'
         elif self.str_process('Paket telah sampai di') in yn_str:
-            zh_str = '到件'
+            zh_str = 'Paket telah sampai di + 网点名称'
         # 派件
         elif self.str_process('Paket akan dikirim ke alamat penerima') in yn_str:
-            zh_str = '派件'
+            zh_str = 'Paket akan dikirim ke alamat penerima'
         # 签收
         elif self.str_process('Paket telah diterima') in yn_str:
-            zh_str = '签收'
+            zh_str = 'Paket telah diterima'
         # 疑难件
         elif self.str_process('Paket disimpan di gudang J&T') in yn_str:
-            zh_str = '疑难件'
+            zh_str = 'Paket disimpan di gudang J&T'
         # 装袋
         elif self.str_process('Pack') in yn_str:
-            zh_str = '装袋'
+            zh_str = 'Pack'
         # 拆袋
         elif self.str_process('Unpack') in yn_str:
-            zh_str = '拆袋'
+            zh_str = 'Unpack'
         # 快件将被退回
         elif self.str_process('Paket akan diretur') in yn_str:
-            zh_str = '快件将被退回'
+            zh_str = 'Paket akan diretur'
         # 快件处理中
         elif self.str_process('Paket Gagal dipickup') in yn_str:
-            zh_str = '快件处理中'
+            zh_str = 'Paket Gagal dipickup'
         # 快件已被退回
         elif self.str_process('Package returned to seller') in yn_str:
-            zh_str = '快件已被退回'
+            zh_str = 'Package returned to seller'
         # # 运单无效
         # elif str_process('Expired AWB') in yn_str:
         #     zh_str = '运单无效'

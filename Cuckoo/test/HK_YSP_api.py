@@ -14,7 +14,7 @@ class SyncStatusThread(object):
         # url = 'http://119.23.28.96/cgi-bin/GInfo.dll?EmsApiTrack&cno=' + track_number
         url = 'http://119.23.28.96/cgi-bin/GInfo.dll?EmsApiTrack&cno=789319545534'
         html = requests.get(url).content.decode('gbk').encode('utf-8')
-        # print html
+        print html
         all_status = re.compile(r'<INFO>(.*?)</INFO>', re.S)
         all_time = re.compile(r'<DATETIME>(.*?)</DATETIME>', re.S)
         status_list = all_status.findall(html)
@@ -31,7 +31,7 @@ class SyncStatusThread(object):
                 ran_status_label = self.control(self.str_process(status))
                 # 以下2行测试使用******************************************************************
                 with open("HK_YSP信息1.txt", "a") as f:
-                    f.write(logistics_time + '\n' + status + '\n' + '归类: ----------- :' + ran_status_label + '\n\n')
+                    f.write(logistics_time + '\n' + status + '\n' )
         else:
             status = '未找到'
             logistics_time = ''

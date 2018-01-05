@@ -26,22 +26,34 @@ def acquire_date():
     pattern = re.compile(r'"date":"(.*?)"', re.S)
     datetime_list = pattern.findall(res)
 
-    if len(status_list) == 0:
-        getstat = '未找到'
-        gettime = '未找到'
-        # 以下2行测试使用******************************************************************
-        with open("CDEK_eluosi信息1.txt", "a") as f:
-            f.write(getstat + '\n' + gettime + '\n')
-    else:
+    if datetime_list:
         CDEK_List = [i for i in zip(status_list, datetime_list)]
-        for i,j in CDEK_List:
-            getstat = i
+        for status,j in CDEK_List:
             gettime = j.split('.')[::-1]
-            gettime = gettime[0] + '-' + gettime[1] + '-' + gettime[2] + ' ' + '00:00:00'
-            # 以下四行测试使用******************************************************************
-            # print getstat
-            # print gettime
+            logistics_time = gettime[0] + '-' + gettime[1] + '-' + gettime[2] + ' ' + '00:00:00'
+
+            # tran_status = send_date(status, logistics_time, track, summary_status, '(198,200)', '').acquire_date()
+            # if tran_status:
+            #     for tran_status_item in tran_status:
+            #         if tran_status_item['status_label'].strip() in status:
+            #             tran_status_label = tran_status_item['status_label']
+            #             break
+            #         else:
+            #             tran_status_label = status
+            # send_date(status, logistics_time, track, ' ', str(status_id[0]['id_shipping']),
+            #           tran_status_label).insert_date()
+            # 以下3行测试使用******************************************************************
+            print 'time:---------------: ', logistics_time + '\n' + 'status:---------------: ', status + '\n' + 'tran:---------------: ', tran_status_label + '\n'
             with open("CDEK_eluosi信息1.txt","a") as f:
-                f.write(getstat +'\n'+ gettime + '\n')
+                f.write(status + '\n' + logistics_time + '\n')
+
+    else:
+        status = '未找到'
+        logistics_time = ''
+        tran_status_label = status
+        # 以下3行测试使用******************************************************************
+        print 'time:---------------: ', logistics_time + '\n' + 'status:---------------: ', status + '\n' + 'tran:---------------: ', tran_status_label + '\n'
+        with open("CDEK_eluosi信息1.txt", "a") as f:
+            f.write(status + '\n' + logistics_time + '\n')
 
 acquire_date()
