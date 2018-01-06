@@ -12,7 +12,7 @@ class SyncStatusThread(object):
         :return:
         '''
         # url = 'http://119.23.28.96/cgi-bin/GInfo.dll?EmsApiTrack&cno=' + track_number
-        url = 'http://119.23.28.96/cgi-bin/GInfo.dll?EmsApiTrack&cno=789319545534'
+        url = 'http://119.23.28.96/cgi-bin/GInfo.dll?EmsApiTrack&cno=080019639971'
         html = requests.get(url).content.decode('gbk').encode('utf-8')
         print html
         all_status = re.compile(r'<INFO>(.*?)</INFO>', re.S)
