@@ -6,16 +6,17 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 url = 'http://118.201.157.11/cgi-bin/GInfo.dll?EmmisTrack'
-url1 = 'http://118.201.157.11/cgi-bin/GInfo.dll?EmsApiTrack&cno=080019639971'
-url2 = 'http://118.201.157.11/cgi-bin/GInfo.dll?MfcISAPICommand=EmsApiTrack&cno=080019639971'
+url1 = 'http://118.201.157.11/cgi-bin/GInfo.dll?EmsApiTrack&'
+url2 = 'http://118.201.157.11/cgi-bin/GInfo.dll?MfcISAPICommand=EmsApiTrack'
 params = {
     # 'w': 'sgatoz',
     # 'cmodel': '',
-    'cno': '080019639971',
+    'cno': '080019640276',
     'ntype': '0',
+    # 'cp': '65001'
 }
 res = requests.post(url, data=params).text
-# print res
+print res
 html = etree.HTML(res)
 
 tr_label_amount = html.xpath('''//html/body/div[@id='defaultContent']//table[@class='trackListTable']//div[@id='oDetail']//tr''')

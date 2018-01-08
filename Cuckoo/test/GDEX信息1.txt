@@ -1,27 +1,57 @@
-2017-12-18 14:00:00
-FD
-SuccessfullyDelivered
-2017-12-11 18:32:00
-DF
-DeliveryFailed
-2017-12-11 10:42:39
-AL2
-BranchOutboundinDeliveryBranch
-2017-12-10 19:25:00
-DF
-DeliveryFailed
-2017-12-10 11:51:30
-AL2
-BranchOutboundinDeliveryBranch
-2017-11-22 11:10:02
+2018-01-04 08:18:47
+AT2
+Processinginpickupbranch
+2017-12-15 03:51:44
 AL1
 BranchInboundinDeliveryBranch
-2017-11-21 07:43:33
+2017-12-14 00:00:00
+DF
+DeliveryFailed
+2017-12-08 17:43:00
+DF
+DeliveryFailed
+2017-12-08 08:48:49
+AL2
+BranchOutboundinDeliveryBranch
+2017-12-08 07:27:55
+AL1
+BranchInboundinDeliveryBranch
+2017-12-08 06:06:32
+AL1
+BranchInboundinDeliveryBranch
+2017-12-07 10:38:34
 DT2
 HubOutbound
-2017-11-21 07:34:02
+2017-12-07 09:00:32
+AT1
+PickupInbound
+2018-01-04 08:21:21
+AT2
+Processinginpickupbranch
+2017-12-13 11:52:07
+AL1
+BranchInboundinDeliveryBranch
+2017-12-12 03:15:11
+AT2
+Processinginpickupbranch
+2017-12-12 00:00:00
+DF
+DeliveryFailed
+2017-12-12 00:00:00
+DF
+DeliveryFailed
+2017-12-08 17:28:23
+DF
+DeliveryFailed
+2017-12-08 08:37:01
+AL2
+BranchOutboundinDeliveryBranch
+2017-12-08 07:49:58
+AL1
+BranchInboundinDeliveryBranch
+2017-12-07 11:37:45
 DT2
 HubOutbound
-2017-11-21 07:12:56
+2017-12-07 09:25:07
 AT1
 PickupInbound
