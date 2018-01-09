@@ -32,14 +32,10 @@ html = requests.post(url).content
 
 soup = BeautifulSoup(html, "lxml")
 bs4_res = soup.find_all("tr")[2:]
+print type(bs4_res)
+print len(bs4_res)
 
-if len(bs4_res) == 0:
-    getstat = '未找到'
-    gettime = '未找到'
-    # 以下2行测试使用******************************************************************
-    with open("新竹信息1.txt", "a") as f:
-        f.write(getstat + '\n' + gettime + '\n')
-else:
+if bs4_res:
     for i in bs4_res:
         gettime = i.get_text().strip().replace('\r', '').replace('\n', '').replace('\t', '').replace('/', '-')[:16]
         gettime += ':00'
@@ -50,3 +46,9 @@ else:
         # 以下2行测试使用******************************************************************
         with open("新竹信息1.txt","a") as f:
             f.write(getstat + '\n' + gettime + '\n')
+else:
+    getstat = '未上线'
+    gettime = '未上线'
+    # 以下2行测试使用******************************************************************
+    with open("新竹信息1.txt", "a") as f:
+        f.write(getstat + '\n' + gettime + '\n')

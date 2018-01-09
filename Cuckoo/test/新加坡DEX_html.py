@@ -6,7 +6,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-url = '	http://47.52.146.142/podtrack/xml.aspx?hawb=' + result['track']
+url = 'http://47.52.146.142/podtrack/xml.aspx?hawb=' + result['track']
 
 res = requests.get(url).content
 # print res
