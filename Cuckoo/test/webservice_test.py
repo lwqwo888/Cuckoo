@@ -1,7 +1,6 @@
 # coding: utf-8  
-# from soaplib.wsgi_soap import SimpleWSGISoapApp
-# from soaplib.service import soapmethod
-# from soaplib.serializers.clazz import ClassSerializer
-# from soaplib.serializers.primitive import String, Integer, Array, DateTime
-# import lwqsoaplib
-import soaplib
+import sys
+reload(sys)
+# sys.setdefaultencoding('utf-8')
+url = "https://ws.aramex.net/ShippingAPI.V2/Tracking/Service_1_0.svc?singleWsdl"
+params =

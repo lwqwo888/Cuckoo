@@ -11,7 +11,7 @@ sys.setdefaultencoding('utf-8')
 def main():
 
     url = 'https://th.kerryexpress.com/th/track/?track=BJT1801031578'
-
+    # url = 'http://www.t-cat.com.tw/Inquire/Trace.aspx?no=620083192784'
     html = requests.get(url).text
     print html
     res = etree.HTML(html)
