@@ -16,7 +16,7 @@ class OperationExcel(object):
              # 还有这种操作?
              self.data = self.get_data()
          else:
-              self.file_name = '../need_operation_excel/2.xlsx'
+              self.file_name = '../need_operation_excel/232.xlsx'
               self.sheet_id  = 0
          self.data = self.get_data()
 

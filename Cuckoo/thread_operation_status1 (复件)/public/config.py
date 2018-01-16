@@ -15,7 +15,7 @@ FILE_NAME = 'apple1'
 col_number = 0
 
 # 这里是你需要操作的文件路径+文件名,比如我这里需要操作的excel名字是caozuo.xls
-FILE_Path = "../need_operation_excel/2.xlsx"
+FILE_Path = "../need_operation_excel/232.xlsx"
 
 # 这里输入你的Sheet_id 默认都是0了
 SHEET_ID = 0

@@ -50,7 +50,7 @@ class OperationExcel(object):
      def get_col_all_data(self, col_number):
          # print self.file
          tables = self.data
-         return tables.col_values(col_number,start_rowx=1,end_rowx=100)
+         return tables.col_values(col_number,start_rowx=1,end_rowx=45188)
 
 
 if __name__ == "__main__":
