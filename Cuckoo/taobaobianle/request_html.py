@@ -8,6 +8,7 @@ sys.setdefaultencoding('utf-8')
 
 
 def size_count(id):
+    id = '560301942354'
     url = 'https://detail.tmall.com/item.htm?&id=%s'%id
     # url = 'https://detail.tmall.com/item.htm?spm=a230r.1.14.154.29b70e2cmQb92Y&id=563134951881&ns=1&abbucket=15'
     headers = {
@@ -26,22 +27,11 @@ def size_count(id):
     html = requests.get(url, headers=headers).text
     # print html
     res = etree.HTML(html)
-    ron = res.xpath('''//*[@id="J_DetailMeta"]/div[1]/div[1]/div/div[4]/div/div/dl[1]/dd/ul/li//span''')
+    ron = res.xpath('''//*//dd/ul/li//span//text()''')
     # 尺码数量
     size_count = len(ron)
-    # print size_count
-    # 偏移量
-    list = []
-    size_num = 1
-    while size_num <= size_count:
-        xpath_str = '''//*[@id="J_DetailMeta"]/div[1]/div[1]/div/div[4]/div/div/dl[1]/dd/ul/li[%s]//span/text()'''%str(size_num)
-        size_num_list = res.xpath(xpath_str)
+    for i in ron:
+        print i
 
-        for x in size_num_list:
-            size = x.replace('\n', '').replace('\t', '').replace('\r', '').strip()
-            # print size
-            list.append(size)
 
-        size_num += 1
-
-    return list
+size_count('c')

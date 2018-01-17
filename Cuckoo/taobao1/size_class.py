@@ -8,6 +8,7 @@ sys.setdefaultencoding('utf-8')
 
 
 def size_count(id):
+    # id = '562441235623'
     url = 'https://detail.tmall.com/item.htm?&id=%s'%id
     # url = 'https://detail.tmall.com/item.htm?spm=a230r.1.14.154.29b70e2cmQb92Y&id=563134951881&ns=1&abbucket=15'
     headers = {
@@ -43,5 +44,5 @@ def size_count(id):
             list.append(size)
 
         size_num += 1
-
+        print list
     return list

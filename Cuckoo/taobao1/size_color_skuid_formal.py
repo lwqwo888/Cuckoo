@@ -56,6 +56,7 @@ class Skuid_Color(object):
             j = 0
             while j < color_len:
                 # 尺码加颜色
+                # print size_list[i]
                 size_color = (size_list[i] + color_data[j])
                 # 把这个尺码对应的所有颜色追加到列表,然后转换成字符串稍后当作值传入字典
                 size_color_list.append(color_data[j])
