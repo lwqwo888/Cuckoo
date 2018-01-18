@@ -8,6 +8,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+
 class Skuid_Color(object):
     # def __init__(self):
     #     self.size_color_dict = {}

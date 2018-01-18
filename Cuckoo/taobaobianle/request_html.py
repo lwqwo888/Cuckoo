@@ -1,4 +1,5 @@
 # coding=utf-8
+# 通过html抓取商品尺码和颜色
 import re
 import requests
 from lxml import etree
@@ -8,7 +9,7 @@ sys.setdefaultencoding('utf-8')
 
 
 def size_count(id):
-    id = '560301942354'
+    id = '557200845972'
     url = 'https://detail.tmall.com/item.htm?&id=%s'%id
     # url = 'https://detail.tmall.com/item.htm?spm=a230r.1.14.154.29b70e2cmQb92Y&id=563134951881&ns=1&abbucket=15'
     headers = {
@@ -25,7 +26,7 @@ def size_count(id):
         'user-agent':"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
     }
     html = requests.get(url, headers=headers).text
-    # print html
+    print html
     res = etree.HTML(html)
     ron = res.xpath('''//*//dd/ul/li//span//text()''')
     # 尺码数量
