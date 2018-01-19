@@ -9,7 +9,7 @@ sys.setdefaultencoding('utf-8')
 
 
 def size_count(id):
-    id = '557200845972'
+    id = '563394241094'
     url = 'https://detail.tmall.com/item.htm?&id=%s'%id
     # url = 'https://detail.tmall.com/item.htm?spm=a230r.1.14.154.29b70e2cmQb92Y&id=563134951881&ns=1&abbucket=15'
     headers = {
@@ -26,13 +26,28 @@ def size_count(id):
         'user-agent':"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
     }
     html = requests.get(url, headers=headers).text
-    print html
+    # print html
     res = etree.HTML(html)
-    ron = res.xpath('''//*//dd/ul/li//span//text()''')
-    # 尺码数量
-    size_count = len(ron)
-    for i in ron:
-        print i
+    # 统计有多少个需要用到的标签
+    content = res.xpath('''//*//dl//dd/ul''')
+    size_count = len(content)
+    print size_count
+    i = 1
+    j = 1
+    while i <= size_count:
+        xpath_str = '''//*//dl[%s]//dd/ul/li//span//text()''' % str(i)
+        content = res.xpath(xpath_str)
+        # 尺码数量
+        for con in content:
+            print con
+        i += 1
+    while j <= size_count:
+        xpath_str = '''//*//dl[%s]//dd/ul/li/@data-value''' % str(j)
+        content = res.xpath(xpath_str)
+        # 尺码数量
+        for con in content:
+            print con
+        j += 1
 
 
 size_count('c')

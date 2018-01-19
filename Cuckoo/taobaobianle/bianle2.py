@@ -20,7 +20,7 @@ class Taobao_Cuckoo(object):
         times = (int(round(t * 1000)))
 
         # url参数中必须要有callback参数
-        url = '''https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=%s&itemId=%s&callback=setMdskip&timestamp=%s''' % (str(times-315000), id, str(times))
+        url = '''https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=%s&itemId=%s&tmallBuySupport=false&callback=setMdskip&timestamp=%s''' % (str(times-315000), id, str(times))
 
         headers = {
 
