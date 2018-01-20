@@ -8,7 +8,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def size_count(id):
+def property_count(id):
     id = '563394241094'
     url = 'https://detail.tmall.com/item.htm?&id=%s'%id
     # url = 'https://detail.tmall.com/item.htm?spm=a230r.1.14.154.29b70e2cmQb92Y&id=563134951881&ns=1&abbucket=15'
@@ -28,26 +28,72 @@ def size_count(id):
     html = requests.get(url, headers=headers).text
     # print html
     res = etree.HTML(html)
-    # 统计有多少个需要用到的标签
-    content = res.xpath('''//*//dl//dd/ul''')
-    size_count = len(content)
-    print size_count
+    # 统计有多少个需要用到的商品属性分类
+    content = res.xpath('''//*//div[@class="tb-skin"]//dl//dd/ul[@data-property]''')
+    # 商品属性分类数
+    property_count = len(content)
+    print property_count
     i = 1
     j = 1
-    while i <= size_count:
+    x = 1
+    big_list = []
+    data_property_list = []
+    data_pvs_list = []
+    data_property_dict = {}
+    while x <= property_count:
+        # 分类名
+        xpath_str = '''//*//div[@class="tb-skin"]//dl[%s]/dt//text()''' % str(x)
+        content = res.xpath(xpath_str)
+        # for con in content:
+            # print con
+        x += 1
+    while i <= property_count:
+
         xpath_str = '''//*//dl[%s]//dd/ul/li//span//text()''' % str(i)
-        content = res.xpath(xpath_str)
+        size_list = res.xpath(xpath_str)
+        big_list.append(size_list)
+        big_list_len = len(big_list)
+        # print test
+
         # 尺码数量
-        for con in content:
-            print con
+        for size_l in size_list:
+            data_property_list.append(size_l)
+            size_length = len(data_property_list)
+            print size_l
+        # 根据分类名数量，创建相应数量的列表
+
+
         i += 1
-    while j <= size_count:
-        xpath_str = '''//*//dl[%s]//dd/ul/li/@data-value''' % str(j)
-        content = res.xpath(xpath_str)
-        # 尺码数量
-        for con in content:
-            print con
-        j += 1
 
+    # while j <= property_count:
+    #     xpath_str = '''//*//dl[%s]//dd/ul/li/@data-value''' % str(j)
+    #     pvs_list = res.xpath(xpath_str)
+    #     # pvs值
+    #     for value in pvs_list:
+    #         data_pvs_list.append(value)
+    #         pvs_length = len(data_pvs_list)
+    #         # print value
+    #     j += 1
 
-size_count('c')
+    # all_data_list = [x for x in zip(data_property_list, data_pvs_list)]
+    # for size, color in all_data_list:
+    #     data_property_dict[size] = color
+    # for key in data_property_dict:
+    #     print key, '---', data_property_dict[key]
+
+    # y = 0
+    # while y < size_length:
+    #     z = 0
+    #     while z < pvs_length:
+    #         key1 = data_property_list[y]
+    #         key2 = data_pvs_list[z]
+    #         print '**************',key1,key2
+    #         print data_property_dict[key1] + data_pvs_list[key2]
+    #         z += 1
+    #
+    #     y += 1
+    # for n in data_property_list:
+    #     print n
+# 两层嵌套列表生成式
+# [m + n for m in 'ABCD' for n in 'XYZ']
+property_count('c')

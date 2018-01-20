@@ -46,6 +46,6 @@ class Taobao_Cuckoo(object):
 if __name__ == '__main__':
 
     tc = Taobao_Cuckoo()
-    id = '557200845972'
+    id = '563394241094'
     skuid = '3554339929557'
     tc.main(id, skuid)
