@@ -1,14 +1,16 @@
 # coding=utf-8
 # 根据商品ID获取商品参数
-import re
-import time
 import json
+import re
+import sys
+import time
+
 import jsonpath
 import requests
+
 import size_class
-from lxml import etree
 from size_color_skuid_formal import Skuid_Color
-import sys
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -86,7 +88,7 @@ if __name__ == '__main__':
     tc = Taobao_Cuckoo()
     url = raw_input('请输入您要查看的淘宝商品链接:')
     # '557200845972'
-    url = 'https://detail.tmall.com/item.htm?spm=608.7065813.ne.1.128f6324pjwY0E&id=557200845972&tracelog=jubuybigpic'
+    url = 'https://item.taobao.com/item.htm?spm=a219r.lmn002.14.174.6f516358W81jq9&id=562441235623&ns=1&abbucket=16'
     id = tc.url_process(url)
     size_list = size_class.size_count(id)
     size_list = '  '.join(size_list)

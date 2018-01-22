@@ -1,10 +1,13 @@
 # coding=utf-8
-import re
 import json
-import requests
-import size_class
-from lxml import etree
+import re
 import sys
+
+import requests
+from lxml import etree
+
+import size_class
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 

@@ -11,14 +11,18 @@ url = 'http://118.201.157.11/cgi-bin/GInfo.dll?EmmisTrack'
 # url2 = 'http://118.201.157.11/cgi-bin/GInfo.dll?MfcISAPICommand=EmsApiTrack'
 url2 = 'http://118.201.157.11/cgi-bin/GInfo.dll?EmsApiTrack&cno=080019173938&cp=936&ntype=101'
 url3 = 'http://118.201.157.11/cgi-bin/GInfo.dll?EmsApiTrack&cno=080019640276'
+url4 = 'http://118.201.157.11/cgi-bin/GInfo.dll?EmmisTrackGenData&cemskind=顺丰IBS&cno=080019640406'
 
 # params = {
 #     'cno': '080019639971',
 #     'ntype': '0',
 # }
 # res = requests.post(url, data=params)
-res =  requests.get(url3).content.decode('gbk').encode("utf-8")
-# print res
+headers = {
+    'user-agent': "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko"
+}
+res =  requests.get(url4, headers=headers).content.decode('gbk').encode("utf-8")
+print res
 
 all_status = re.compile(r'<INFO>(.*?)</INFO>', re.S)
 all_time = re.compile(r'<DATETIME>(.*?)</DATETIME>', re.S)

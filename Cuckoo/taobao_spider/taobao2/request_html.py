@@ -3,6 +3,7 @@
 import re
 import requests
 from lxml import etree
+from pvs import PVS
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -26,7 +27,7 @@ def property_count(id):
         'user-agent':"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
     }
     html = requests.get(url, headers=headers).text
-    # print html
+    print html
     res = etree.HTML(html)
     # 统计有多少个需要用到的商品属性分类
     content = res.xpath('''//*//div[@class="tb-skin"]//dl//dd/ul[@data-property]''')
@@ -40,6 +41,7 @@ def property_count(id):
     data_property_list = []
     data_pvs_list = []
     data_property_dict = {}
+    # 获取页面所有属性分类
     while x <= property_count:
         # 分类名
         xpath_str = '''//*//div[@class="tb-skin"]//dl[%s]/dt//text()''' % str(x)
@@ -47,53 +49,39 @@ def property_count(id):
         # for con in content:
             # print con
         x += 1
-    while i <= property_count:
 
+    # 获取页面所有属性详细信息
+    while i <= property_count:
         xpath_str = '''//*//dl[%s]//dd/ul/li//span//text()''' % str(i)
         size_list = res.xpath(xpath_str)
         big_list.append(size_list)
         big_list_len = len(big_list)
         # print test
-
         # 尺码数量
         for size_l in size_list:
             data_property_list.append(size_l)
             size_length = len(data_property_list)
             print size_l
         # 根据分类名数量，创建相应数量的列表
-
-
         i += 1
+    # 获取页面中所有pvs
+    while j <= property_count:
+        xpath_str = '''//*//dl[%s]//dd/ul/li/@data-value''' % str(j)
+        pvs_list = res.xpath(xpath_str)
+        # pvs值
+        for value in pvs_list:
+            data_pvs_list.append(value)
+            pvs_length = len(data_pvs_list)
+            # print value
+        j += 1
+    # 循环将两个列表中的型号和pvs读取出来存入一个列表，再循环以键值的方式写入字典
+    all_data_list = [x for x in zip(data_property_list, data_pvs_list)]
+    for size, color in all_data_list:
+        data_property_dict[size] = color
+    for key in data_property_dict:
+        print key, '---', data_property_dict[key]
 
-    # while j <= property_count:
-    #     xpath_str = '''//*//dl[%s]//dd/ul/li/@data-value''' % str(j)
-    #     pvs_list = res.xpath(xpath_str)
-    #     # pvs值
-    #     for value in pvs_list:
-    #         data_pvs_list.append(value)
-    #         pvs_length = len(data_pvs_list)
-    #         # print value
-    #     j += 1
-
-    # all_data_list = [x for x in zip(data_property_list, data_pvs_list)]
-    # for size, color in all_data_list:
-    #     data_property_dict[size] = color
-    # for key in data_property_dict:
-    #     print key, '---', data_property_dict[key]
-
-    # y = 0
-    # while y < size_length:
-    #     z = 0
-    #     while z < pvs_length:
-    #         key1 = data_property_list[y]
-    #         key2 = data_pvs_list[z]
-    #         print '**************',key1,key2
-    #         print data_property_dict[key1] + data_pvs_list[key2]
-    #         z += 1
-    #
-    #     y += 1
-    # for n in data_property_list:
-    #     print n
-# 两层嵌套列表生成式
-# [m + n for m in 'ABCD' for n in 'XYZ']
+    pvs_list = PVS().pvs(property_count, big_list, data_property_dict)
+    for li in pvs_list:
+        print li
 property_count('c')
