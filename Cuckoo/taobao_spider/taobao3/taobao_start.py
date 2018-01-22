@@ -12,7 +12,7 @@ sys.setdefaultencoding('utf-8')
 
 
 def property_count(id):
-    id = '551667132968'
+    # id = '551667132968'
     url = 'https://detail.tmall.com/item.htm?&id=%s' % id
     # url = 'https://detail.tmall.com/item.htm?spm=a230r.1.14.154.29b70e2cmQb92Y&id=563134951881&ns=1&abbucket=15'
     headers = {
@@ -92,4 +92,20 @@ def property_count(id):
     commodity_stock_list = [x for x in zip(Product_attributes_list, stock_list)]
     for product_attributes, sellableQuantity in commodity_stock_list:
         print product_attributes,'的库存数量为：',sellableQuantity
-property_count('c')
+
+
+def url_process(url):
+    res = re.compile(r'&id=(\d+).*?', re.S)
+    id = res.findall(url)
+    return ''.join(id)
+
+
+if __name__ == '__main__':
+
+
+    url = raw_input('请输入您要查看的淘宝商品链接:')
+    # '557200845972'
+    # url = 'https://detail.tmall.com/item.htm?spm=608.7065813.ne.1.128f6324pjwY0E&id=557200845972&tracelog=jubuybigpic'
+    id = url_process(url)
+    # print id
+    property_count(id)
