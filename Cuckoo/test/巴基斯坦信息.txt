@@ -1,0 +1,70 @@
+2018-01-16 17:55
+HONG KONG,Uplifted from Transshipment Hub
+2018-01-15 13:30
+,Export Customs Cleared
+2018-01-14 07:43
+Shenzhen,On Vehicle to Transshipment Hub
+2018-01-14 04:27
+SHENZHEN,Item despatched to Transshipment hub
+2018-01-14 00:40
+SHENZHEN,Processed at origin hub
+2018-01-13 16:11
+SHENZHEN,Received shipment
+2018-01-11 19:09
+,Shipping information received
+2018-01-16 17:55
+HONG KONG,Uplifted from Transshipment Hub
+2018-01-15 13:30
+,Export Customs Cleared
+2018-01-14 07:43
+Shenzhen,On Vehicle to Transshipment Hub
+2018-01-14 04:27
+SHENZHEN,Item despatched to Transshipment hub
+2018-01-14 00:40
+SHENZHEN,Processed at origin hub
+2018-01-13 16:11
+SHENZHEN,Received shipment
+2018-01-11 19:09
+,Shipping information received
+2018-01-16 17:55
+HONG KONG,Uplifted from Transshipment Hub
+2018-01-15 13:30
+,Export Customs Cleared
+2018-01-14 07:43
+Shenzhen,On Vehicle to Transshipment Hub
+2018-01-14 04:27
+SHENZHEN,Item despatched to Transshipment hub
+2018-01-14 00:40
+SHENZHEN,Processed at origin hub
+2018-01-13 16:11
+SHENZHEN,Received shipment
+2018-01-11 19:09
+,Shipping information received
+2018-01-16 17:55:00
+HONG KONG,Uplifted from Transshipment Hub
+2018-01-15 13:30:00
+,Export Customs Cleared
+2018-01-14 07:43:00
+Shenzhen,On Vehicle to Transshipment Hub
+2018-01-14 04:27:00
+SHENZHEN,Item despatched to Transshipment hub
+2018-01-14 00:40:00
+SHENZHEN,Processed at origin hub
+2018-01-13 16:11:00
+SHENZHEN,Received shipment
+2018-01-11 19:09:00
+,Shipping information received
+2018-01-16 17:55:00
+HONG KONG,Uplifted from Transshipment Hub
+2018-01-15 13:30:00
+,Export Customs Cleared
+2018-01-14 07:43:00
+Shenzhen,On Vehicle to Transshipment Hub
+2018-01-14 04:27:00
+SHENZHEN,Item despatched to Transshipment hub
+2018-01-14 00:40:00
+SHENZHEN,Processed at origin hub
+2018-01-13 16:11:00
+SHENZHEN,Received shipment
+2018-01-11 19:09:00
+,Shipping information received
