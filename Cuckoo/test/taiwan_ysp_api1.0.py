@@ -28,7 +28,7 @@ if all_time:
 
     taiwanysp_list = [x for x in zip(time_list, status_list)]
     for logistics_time, status in taiwanysp_list:
-        status = status.decode("unicode_escape")
+        status = status.decode("unicode-escape")
         tran_status_label = status
         # print logistics_time
         # print status

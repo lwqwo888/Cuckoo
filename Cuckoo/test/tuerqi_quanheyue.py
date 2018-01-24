@@ -43,7 +43,7 @@ all_status_list = all_status.findall(all_data_list)
 all_time = re.compile(r'"Occur_date":"(.*?)"', re.S)
 all_time_list = all_time.findall(all_data_list)
 
-status_id = send_date(status, logistics_time, track, summary_status, '(252)', '').acquire_date_id()
+status_id = send_date(status, logistics_time, track, summary_status, '(250, 256)', '').acquire_date_id()
 
 if all_time_list:
     tuerqi_quanheyue_list = [x for x in zip(all_time_list, all_status_list)]

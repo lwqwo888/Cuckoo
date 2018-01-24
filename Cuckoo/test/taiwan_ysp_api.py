@@ -5,7 +5,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-url = 'http://220.132.209.89/API/esp.php?A=esp&C=esp1234&S=36688824124874'
+url = 'http://220.132.209.89/API/esp.php?A=esp&C=esp1234&S=36680224124874'
 res = requests.get(url).text
 # print res
 time_list = []
@@ -27,7 +27,7 @@ if all_time:
 
     taiwanysp_list = [x for x in zip(time_list, status_list)]
     for logistics_time, status in taiwanysp_list:
-        status = status.decode("unicode_escape")
+        status = status.decode("unicode-escape")
         tran_status_label = status
         # print logistics_time
         # print status
