@@ -51,6 +51,6 @@ if all_time_list:
 
 else:
     status = '未上线'
-    logistics_time = '未上线'
+    logistics_time = ''
     print 'time:-------:', logistics_time
     print 'status:-------:', status
