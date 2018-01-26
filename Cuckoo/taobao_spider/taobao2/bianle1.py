@@ -37,6 +37,6 @@ class Skuid_Color(object):
 
 if __name__ == '__main__':
     sc = Skuid_Color()
-    id = '563394241094'
+    id = '557200845972'
     sc.skuid_num(id)
 

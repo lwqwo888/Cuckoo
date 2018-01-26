@@ -29,7 +29,7 @@ def property_count(id):
         'user-agent': "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
     }
     html = requests.get(url, headers=headers).text
-    # print html
+    print html
     res = etree.HTML(html)
     # 统计有多少个需要用到的商品属性分类
     content = res.xpath('''//*//div[@class="tb-skin"]//dl//dd/ul[@data-property]''')
@@ -104,9 +104,9 @@ def url_process(url):
 if __name__ == '__main__':
 
 
-    url = raw_input('请输入您要查看的淘宝商品链接:')
+    # url = raw_input('请输入您要查看的淘宝商品链接:')
     # '557200845972'
-    # url = 'https://detail.tmall.com/item.htm?spm=608.7065813.ne.1.128f6324pjwY0E&id=557200845972&tracelog=jubuybigpic'
+    url = 'https://detail.tmall.com/item.htm?spm=608.7065813.ne.1.128f6324pjwY0E&id=557200845972&tracelog=jubuybigpic'
     id = url_process(url)
     # print id
     property_count(id)
