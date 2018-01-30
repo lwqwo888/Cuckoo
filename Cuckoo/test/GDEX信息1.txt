@@ -55,3 +55,120 @@ HubOutbound
 2017-12-07 09:25:07
 AT1
 PickupInbound
+
+未找到
+未找到
+
+未找到
+未找到
+
+未找到
+未找到
+
+未找到
+未找到
+
+未找到
+未找到
+
+未找到
+未找到
+
+未找到
+未找到
+
+未上线
+未上线
+
+未上线
+未上线
+
+未上线
+未上线
+
+未上线
+未上线
+
+未上线
+未上线
+
+未找到
+未找到
+
+未找到
+未找到
+
+未找到
+未找到
+2018-01-26 15:20:00
+FD
+SuccessfullyDelivered
+2018-01-25 12:26:06
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 09:06:31
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 07:17:38
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-25 01:16:03
+DT2
+HubOutbound
+2018-01-24 03:27:45
+DT1
+HubInbound
+
+未找到
+未找到
+2017-12-18 14:00:00
+FD
+SuccessfullyDelivered
+2017-12-11 18:32:00
+DF
+DeliveryFailed
+2017-12-11 10:42:39
+AL2
+BranchOutboundinDeliveryBranch
+2017-12-10 19:25:00
+DF
+DeliveryFailed
+2017-12-10 11:51:30
+AL2
+BranchOutboundinDeliveryBranch
+2017-11-22 11:10:02
+AL1
+BranchInboundinDeliveryBranch
+2017-11-21 07:43:33
+DT2
+HubOutbound
+2017-11-21 07:34:02
+DT2
+HubOutbound
+2017-11-21 07:12:56
+AT1
+PickupInbound
+2018-01-06 07:03:42
+AT2
+Processinginpickupbranch
+2018-01-06 00:00:00
+DF
+DeliveryFailed
+2018-01-02 18:56:00
+DF
+DeliveryFailed
+2018-01-02 10:52:58
+AL2
+BranchOutboundinDeliveryBranch
+2017-12-14 08:41:06
+AL1
+BranchInboundinDeliveryBranch
+2017-12-14 06:18:04
+AT2
+Processinginpickupbranch
+2017-12-14 02:39:31
+AL1
+BranchInboundinDeliveryBranch
+2017-12-13 05:29:59
+DT2
+HubOutbound

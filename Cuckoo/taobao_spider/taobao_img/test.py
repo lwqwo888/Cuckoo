@@ -1,14 +1,15 @@
 # coding=utf-8
+import os
 import re
 import requests
+from lxml import etree
 import sys
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
-def property_count(id):
-    url = 'https://detail.tmall.com/item.htm?&amp;id=%s' % id
+def video(url, sid):
+    # url = "https://item.taobao.com/item.htm?id=560301942354"
     headers = {
         'authority': 'detail.tmall.com',
         'method': 'GET',
@@ -22,22 +23,53 @@ def property_count(id):
         'user-agent': "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
     }
     html = requests.get(url, headers=headers).text
-    # print html
+    res = etree.HTML(html)
+    title = res.xpath('/html/head/link[@rel="canonical"]/@href')[0]
 
-    # img_url_obj = re.compile(r'//img.*?\.jpg', re.S)
-    # img_url_obj = re.compile(r'//img\S*?\.(png|jpg)$/', re.S)
+    if "taobao.com/" in title:
+        # print "淘宝",title
+        mark_num = 1
+    elif "tmall.com/" in title:
+        # print "天猫",title
+        mark_num = 2
+    else:
+        # print "其他",title
+        mark_num = 3
+    print mark_num
+    if mark_num == 1:
+        res1 = re.compile(r'"videoId":"(.*?)".*"videoOwnerId":"(.*?)",', re.S)
+        vid = res1.findall(html)
+        if vid:
+            vid1 = vid[0][1]
+            vid2 = vid[0][0]
+            print 'vid1:', vid1
+            print 'vid2:', vid2
+            download_video(sid, vid1, vid2)
+        else:
+            print "%s商品没有展示视频！" % sid
 
-    img_url_obj = re.compile(r'(//img.*?\.(png|jpg|SS2))', re.S)
-    img_url_list = img_url_obj.findall(html)
-    print len(img_url_list)
-    for i in img_url_list:
-        # if ',' in i:
-        #     img_url_list.remove(i)
-        # else:
-        #     print i
-        print i[0]
-    print len(img_url_list)
+    elif mark_num == 2:
+        res2 = re.compile(r'"imgVedioUrl":".*?u/(.*?)/p.*?8/(.*?)\.swf"', re.S)
+        res2.findall(html)
+        vid = res2.findall(html)
+        if vid:
+            vid1 = vid[0][0]
+            vid2 = vid[0][1]
+            print 'vid1:', vid1
+            print 'vid2:', vid2
+            download_video(sid, vid1, vid2)
+        else:
+            print "%s商品没有展示视频！" % sid
 
+def download_video(sid, vid1, vid2):
+    path = "videos/%s/" % (sid)
+    if (not (os.path.exists(path))):
+        os.makedirs(path)
+    url = 'https://cloud.video.taobao.com/play/u/%s/p/1/e/6/t/1/%s.mp4' % (vid1, vid2)
+    res = requests.get(url).content
+
+    with open("videos/" + sid + "/" + sid + "video.mp4", 'wb') as f:
+        f.write(res)
 
 def url_process(url):
     res = re.compile(r'(\?|&)id=(\d+).*?', re.S)
@@ -45,10 +77,12 @@ def url_process(url):
     # print id
     return ''.join(id)
 
-
 if __name__ == '__main__':
-
-    url = 'https://item.taobao.com/item.htm?spm=a219r.lm874.14.31.5dc9e78e7Fcl7j&amp;id=557200845972&ns=1&abbucket=16#detail'
-    # id = url_process(url)
-    id = '557200845972'
-    property_count(id)
+    # https://item.taobao.com/item.htm?id=560301942354
+    # url = "https://detail.tmall.com/item.htm?id=557200845972"
+    with open('taobaourl.txt', 'rb') as f:
+        lines = f.readlines()
+    for line in lines:
+        id = url_process(line)
+        print id
+        video(line, id)

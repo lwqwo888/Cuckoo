@@ -8,6 +8,7 @@ import urllib
 import urllib2
 import requests
 import StringIO
+import threading
 from lxml import etree
 import sys
 
@@ -17,6 +18,10 @@ sys.setdefaultencoding('utf-8')
 
 class Taobao_Img(object):
     def __init__(self):
+        current_path = os.path.split(os.path.realpath(__file__))[0]
+        self.__file_log = open('%s/log%s.txt' % (current_path, time.strftime('%Y_%m_%d')), 'a+')
+        self.mutex = threading.Lock()
+        self.url = 'https://detail.tmall.com/item.htm?&id='
         self.proxy = {"http": ""}
         self.headers = {
             'authority': 'detail.tmall.com',
@@ -30,12 +35,24 @@ class Taobao_Img(object):
             'upgrade-insecure-requests': "1",
             'user-agent': "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
         }
-    def property_count(self, id):
-        url = 'https://detail.tmall.com/item.htm?&id=%s' % id
+        self.html_data = ""
+        self.res_data = ""
 
-        html = requests.get(url, headers=self.headers, proxies=self.proxy).text
-        res = etree.HTML(html)
-        ron = res.xpath('''//*[@id="J_UlThumb"]//a/img/@src|//*[@id="J_UlThumb"]//a/img/@data-src''')
+    def page_data(self, id):
+        url = self.url + id
+        print "当前商品链接：%s" % url
+        try:
+            self.html_data = requests.get(url, headers=self.headers, proxies=self.proxy).text
+            self.res_data = etree.HTML(self.html_data)
+            print "请求成功！"
+            return self.res_data
+        except Exception as e:
+            print e
+            self.log(str(e))
+
+    def turn_img(self, id):
+        # res = etree.HTML(self.html_data)
+        ron = self.res_data.xpath('''//*[@id="J_UlThumb"]//a/img/@src|//*[@id="J_UlThumb"]//a/img/@data-src''')
         cover_img_list = []
         for err_url in ron:
             index_num = self.find_last(err_url, "_")
@@ -46,26 +63,41 @@ class Taobao_Img(object):
                 f.write("http:" + true_url + '\n')
                 print "http:" + true_url
         cover_img_list_length = len(cover_img_list)
-        self.download_img(cover_img_list_length, cover_img_list, id, "展示图")
+        self.download_img(cover_img_list_length, cover_img_list, id, "轮播图")
 
+    def color_img(self, id):
+        xpath_str1 = '''//*//div[@class="tb-skin"]//dl/dd/ul/li/a[@style]/span/text()'''
+        xpath_str2 = '''//*//div[@class="tb-skin"]//dl/dd/ul/li/a/@style'''
+        color_list = self.res_data.xpath(xpath_str1)
+        err_color_url_list = self.res_data.xpath(xpath_str2)
+        color_url_list = []
+        for err_color_url in err_color_url_list:
+            index_num = self.find_last(err_color_url, "_")
+            color_url = err_color_url[:index_num]
+            color_url_list.append(color_url.split("(")[1])
+        length = len(color_url_list)
+
+        self.download_img(length, color_url_list, id, "颜色图", color_list)
+
+    def detail_img(self, id):
         desc_url_obj = re.compile(r'''descUrl.*?('//(.*?)'|"//(.*?)")''', re.S)
-        desc_url_list = desc_url_obj.findall(html)
+        desc_url_list = desc_url_obj.findall(self.html_data)
         desc_url = 'http:' + desc_url_list[0][0].replace('"', '').replace("'", '')
-        print desc_url
-        print '++++++++++++++++', self.proxy
+        # print desc_url
+        # print '++++++++++++++++', self.proxy
         res = requests.get(desc_url, headers=self.headers, proxies=self.proxy).content
-        print res
+        # print res
         img_url_obj = re.compile(r'(//img.*?\.(jpg|png|SS2))', re.S)
         img_url_list = img_url_obj.findall(res)
         length = len(img_url_list)
-        print '去重前url数量', length
+        print '去重前url数量:', length
         temporary_img_url_list = []
         for i in img_url_list:
             temporary_img_url_list.append(i[0])
         news_img_url_list = list(set(temporary_img_url_list))
         news_img_url_list.sort(key=temporary_img_url_list.index)
         new_length = len(news_img_url_list)
-        print '去重后url数量', new_length
+        print '去重后url数量:', new_length
         for j in news_img_url_list:
             with open("img_url.txt", 'a') as f:
                 f.write("http:" + j + '\n')
@@ -74,29 +106,42 @@ class Taobao_Img(object):
         # with open('img_url.txt', 'rb') as f:
         #     lines = f.readlines()
             # print '///////////////////////',len(lines)
-    def download_img(self, list_length, list, id, name):
+
+    def download_img(self, list_length, list, id, name, *args):
         k = 0
         # new_length = 1
         while k < list_length:
             img_url = list[k]
             img_url = "http:" + img_url
             # img_url = lines[k].replace('\n', '')
-            data = requests.get(img_url, headers=self.headers, proxies=self.proxy).content
-            path = "img/%s" % id
+
+            path = "img/%s/%s/" % (id, name)
             if (not (os.path.exists(path))):
-                os.mkdir(path)
+                os.makedirs(path)
 
             format = img_url[-4:]
             # print format
-            img_name = id + name + str(k+1)
-            with open("img/" + id + "/" + img_name + format, 'wb') as f:
+            if args:
+            # if isinstance(args[0], list):
+                img_name = args[0][k]
+            else:
+                img_name = id + name + str(k+1)
+            print "正在请求　%s" % name
+            try:
+                data = requests.get(img_url, headers=self.headers, proxies=self.proxy).content
+            except Exception as e:
+                print '请求失败...',e
+                self.log(str(e))
+            print "正在保存　%s" % img_name
+            with open("img/" + id + "/" + name + "/" + img_name + format, 'wb') as f:
                 # print '******************',res
                 f.write(data)
 
-            print '第%s个url: %s' % (k+1, img_url)
-            time.sleep(1)
+            print '共%s个　第%s个url: %s' % (list_length, k+1, img_url)
+            time.sleep(0.3)
 
             k += 1
+        print "%s商品%s图片已抓取完成！！\n" % (id, name)
 
     def find_last(self, string, str):
         last_position = -1
@@ -210,14 +255,28 @@ class Taobao_Img(object):
             print e
             return None
 
+    def log(self, msg):
+        self.mutex.acquire()
+        self.__file_log.write(msg.encode('utf-8'))
+        self.__file_log.write(u'\n'.encode('utf-8'))
+        self.mutex.release()
+
 
 if __name__ == '__main__':
+    start = time.time()
     ti = Taobao_Img()
     with open('taobaourl.txt', 'rb') as f:
         lines = f.readlines()
     for line in lines:
         id = ti.url_process(line)
-        ti.property_count(id)
+        ti.page_data(id)
+        ti.turn_img(id)
+        ti.color_img(id)
+        ti.detail_img(id)
+        print "%s商品所有图片抓取完成！！！！！！！！\n\n" % id
+    end = time.time()
+    time_s = end-start
+    print "所有抓取任务已完成！共计用时%s秒\n\n" % time_s
     # url = "https://detail.tmall.com/item.htm?id=557200845972"
     # url = "https://item.taobao.com/item.htm?spm=a219r.lmn002.14.174.6f516358W81jq9&id=562441235623&ns=1&abbucket=16"
     # url = 'https://item.taobao.com/item.htm?spm=a219r.lm874.14.31.5dc9e78e7Fcl7j&id=557200845972&ns=1&abbucket=16#detail'
