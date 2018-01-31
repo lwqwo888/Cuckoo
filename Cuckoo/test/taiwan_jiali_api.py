@@ -7,7 +7,7 @@ from lxml import etree
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-url = "http://stg.timesoms.com/api/orders/40002000070"
+url = "http://stg.timesoms.com/api/orders/40002001056"
 headers = {
     'Authorization': "Bearer sbv99QoVncfr4twUlpByLwGLNKMMfLlSKtU0DIZYGFl85o5SlWeMvsShlIvl"
 }
