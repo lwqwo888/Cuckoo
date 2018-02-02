@@ -51,7 +51,7 @@ class Taobao_Img(object):
             print e
             self.log(str(e))
 
-    def turn_img(self, id):
+    def turn_img(self, id, category_name, dir_name):
         # res = etree.HTML(self.html_data)
         ron = self.res_data.xpath('''//*[@id="J_UlThumb"]//a/img/@src|//*[@id="J_UlThumb"]//a/img/@data-src''')
         cover_img_list = []
@@ -64,9 +64,9 @@ class Taobao_Img(object):
                 f.write("http:" + true_url + '\n')
                 # print "http:" + true_url
         cover_img_list_length = len(cover_img_list)
-        self.download_img(cover_img_list_length, cover_img_list, id, "轮播图")
+        self.download_img(cover_img_list_length, cover_img_list, id, category_name, dir_name, "轮播图")
 
-    def color_img(self, id):
+    def color_img(self, id, category_name, dir_name):
         xpath_str1 = '''//*//div[@class="tb-skin"]//dl/dd/ul/li/a[@style]/span/text()'''
         xpath_str2 = '''//*//div[@class="tb-skin"]//dl/dd/ul/li/a/@style'''
         color_list = self.res_data.xpath(xpath_str1)
@@ -78,9 +78,9 @@ class Taobao_Img(object):
             color_url_list.append(color_url.split("(")[1])
         length = len(color_url_list)
 
-        self.download_img(length, color_url_list, id, "颜色图", color_list)
+        self.download_img(length, color_url_list, id, category_name, dir_name, "颜色图", color_list)
 
-    def detail_img(self, id):
+    def detail_img(self, id, category_name, dir_name):
         desc_url_obj = re.compile(r'''descUrl.*?('//(.*?)'|"//(.*?)")''', re.S)
         desc_url_list = desc_url_obj.findall(self.html_data)
         desc_url = 'http:' + desc_url_list[0][0].replace('"', '').replace("'", '')
@@ -104,19 +104,20 @@ class Taobao_Img(object):
             with open("img_url.txt", 'a') as f:
                 f.write("http:" + j + '\n')
                 # print "http:" + j
-        self.download_img(new_length, news_img_url_list, id, "细节图")
+        self.download_img(new_length, news_img_url_list, id, category_name, dir_name, "细节图")
         # with open('img_url.txt', 'rb') as f:
         #     lines = f.readlines()
             # print '///////////////////////',len(lines)
 
-    def download_img(self, list_length, list, id, name, *args):
+    def download_img(self, list_length, list, id, name, category_name, dir_name, *args):
         k = 0
         while k < list_length:
             img_url = list[k]
             img_url = "http:" + img_url
             # img_url = lines[k].replace('\n', '')
             # cid = str(num) + id
-            path = "taobao_multimedia_datas/%s/img/%s/" % (id, name)
+            # taobao_multimedia_datas/女装/女装连衣裙/img/name        /id+name
+            path = "taobao_multimedia_datas/%s/%s/%s/img/%s/" % (category_name, dir_name, id, name)
             if (not (os.path.exists(path))):
                 os.makedirs(path)
             # 后缀名
@@ -146,7 +147,7 @@ class Taobao_Img(object):
                 elif "/" in img_name:
                     img_name = (img_name.replace('|', '_'))
 
-                img_name = img_name + str(k+1)
+                img_name = str(k+1) + "_" + img_name
 
             else:
                 img_name = id + name + str(k+1)
@@ -157,7 +158,7 @@ class Taobao_Img(object):
                 print '图片请求失败...',e
                 self.log(str(e))
             print "正在保存　%s" % img_name
-            with open("taobao_multimedia_datas/" + id + "/img/" + name + "/" + img_name + format, 'wb') as f:
+            with open(path + img_name + format, 'wb') as f:
                 # print '******************',res
                 f.write(data)
 # --------------------------------------------------------------------------------------
@@ -287,21 +288,23 @@ class Taobao_Img(object):
         self.mutex.release()
 
 
-if __name__ == '__main__':
-    start = time.time()
-    ti = Taobao_Img()
-    with open('taobaourl.txt', 'rb') as f:
-        lines = f.readlines()
-    for line in lines:
-        id = ti.url_process(line)
-        ti.page_data(id)
-        ti.turn_img(id)
-        ti.color_img(id)
-        ti.detail_img(id)
-        print "[INFO]: %s商品所有图片抓取完成！！！！！！！！\n\n" % id
-    end = time.time()
-    time_s = end-start
-    print "[INFO]: 所有抓取任务已完成！共计用时%s秒\n\n" % time_s
+# if __name__ == '__main__':
+#     start = time.time()
+#     ti = Taobao_Img()
+#     with open('taobaourl.txt', 'rb') as f:
+#         lines = f.readlines()
+#     id_list = []
+#     for line in lines:
+#         id = ti.url_process(line)
+#         id_list.append(id)
+#         ti.page_data(id)
+#         ti.turn_img(id)
+#         ti.color_img(id)
+#         ti.detail_img(id)
+#         print "[INFO]: %s商品所有图片抓取完成！！！！！！！！\n\n" % id
+#     end = time.time()
+#     time_s = end-start
+#     print "[INFO]: 所有抓取任务已完成！共计用时%s秒\n\n" % time_s
     # url = "https://detail.tmall.com/item.htm?id=557200845972"
     # url = "https://item.taobao.com/item.htm?spm=a219r.lmn002.14.174.6f516358W81jq9&id=562441235623&ns=1&abbucket=16"
     # url = 'https://item.taobao.com/item.htm?spm=a219r.lm874.14.31.5dc9e78e7Fcl7j&id=557200845972&ns=1&abbucket=16#detail'

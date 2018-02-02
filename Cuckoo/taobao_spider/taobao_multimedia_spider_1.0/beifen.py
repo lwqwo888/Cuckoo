@@ -109,45 +109,23 @@ class Taobao_Img(object):
         #     lines = f.readlines()
             # print '///////////////////////',len(lines)
 
-    def download_img(self, list_length, list, id, name, *args):
+    def download_img(self, list_length, list, type_name, id, name, *args):
+        t_name = type_name
         k = 0
+        # new_length = 1
         while k < list_length:
             img_url = list[k]
             img_url = "http:" + img_url
             # img_url = lines[k].replace('\n', '')
-            # cid = str(num) + id
-            path = "taobao_multimedia_datas/%s/img/%s/" % (id, name)
+            # 第一个%s是分类名,第二个%s是文件名,第三个%s是name
+            path = "taobao_multimedia_data/%s/%s/img/%s/" % (t_name, id, name)
             if (not (os.path.exists(path))):
                 os.makedirs(path)
-            # 后缀名
             format = img_url[-4:]
             # print format
             if args:
             # if isinstance(args[0], list):
-                img_name = (args[0][k])
-
-                print img_name
-                if '\\' in img_name:
-                    img_name = (img_name.replace('\\', '_'))
-                elif "/" in img_name:
-                    img_name = (img_name.replace('/', '_'))
-                elif "/" in img_name:
-                    img_name = (img_name.replace(':', '_'))
-                elif "/" in img_name:
-                    img_name = (img_name.replace('*', '_'))
-                elif "/" in img_name:
-                    img_name = (img_name.replace('?', '_'))
-                elif "/" in img_name:
-                    img_name = (img_name.replace('"', '_'))
-                elif "/" in img_name:
-                    img_name = (img_name.replace('<', '_'))
-                elif "/" in img_name:
-                    img_name = (img_name.replace('>', '_'))
-                elif "/" in img_name:
-                    img_name = (img_name.replace('|', '_'))
-
-                img_name = img_name + str(k+1)
-
+                img_name = args[0][k]
             else:
                 img_name = id + name + str(k+1)
             print "正在请求　%s" % name
@@ -157,16 +135,15 @@ class Taobao_Img(object):
                 print '图片请求失败...',e
                 self.log(str(e))
             print "正在保存　%s" % img_name
-            with open("taobao_multimedia_datas/" + id + "/img/" + name + "/" + img_name + format, 'wb') as f:
+            with open("taobao_multimedia_data/t_name" + id + "/img/" + name + "/" + img_name + format, 'wb') as f:
                 # print '******************',res
                 f.write(data)
 # --------------------------------------------------------------------------------------
             print '共%s个　第%s个url: %s' % (list_length, k+1, img_url)
-            time.sleep(0)
+            time.sleep(0.3)
 
             k += 1
         print "[INFO]: %s商品%s图片已抓取完成！！\n" % (id, name)
-        # return save()
 
     def find_last(self, string, str):
         last_position = -1

@@ -20,12 +20,19 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 def main():
+    '''
+    JK0000011458
+    JK0000011183
+    JK0000011106
+
+    :return:
+    '''
     data_queue = Queue.Queue()
     # url = "http://jk.jet.co.id:22232/jandt_web/order/orderAction!createOrder.action"
     url = "http://jk.jet.co.id:22261/jant_szcuckoo_web/szcuckoo/trackingAction!tracking.action"
 
     params = {
-        "awb": "JK0000000366"
+        "awb": "JK0000011106"
     }
     params = json.dumps(params,ensure_ascii=False)
     json_object = json.loads(params)

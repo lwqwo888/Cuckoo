@@ -57,7 +57,7 @@ class Taobao_Videos(object):
                 vid2 = vid[0][0]
                 print 'vid1:', vid1
                 print 'vid2:', vid2
-                self.download_video(sid, vid1, vid2, category_name, dir_name)
+                self.download_video(sid, vid1, vid2)
             else:
                 print "[INFO]: %s商品没有展示视频！" % sid
 
@@ -75,7 +75,6 @@ class Taobao_Videos(object):
                 print "[INFO]: %s商品没有展示视频！" % sid
 
     def download_video(self, sid, vid1, vid2, category_name, dir_name):
-
         # taobao_multimedia_datas/女装/女装连衣裙/videos/
         path = "taobao_multimedia_datas/%s/%s/%s/videos/" % (category_name, dir_name, sid)
         if (not (os.path.exists(path))):

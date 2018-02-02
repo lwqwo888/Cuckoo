@@ -5,9 +5,9 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-url = 'http://220.132.209.89/API/esp.php?A=esp&C=esp1234&S=36613524124874'
+url = 'http://220.132.209.89/API/esp.php?A=esp&C=esp1234&S=36514924124874'
 res = requests.get(url).text
-# print res
+print res
 time_list = []
 time_info = re.compile(r'"states_t":\[(.*?)\]', re.S)
 status_info = re.compile(r'"states_s":\[(.*?)\]', re.S)
