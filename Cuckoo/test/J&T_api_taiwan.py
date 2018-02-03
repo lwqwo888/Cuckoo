@@ -32,7 +32,7 @@ def main():
     url = "http://jk.jet.co.id:22261/jant_szcuckoo_web/szcuckoo/trackingAction!tracking.action"
 
     params = {
-        "awb": "JK0000011106"
+        "awb": "JK0000009322"
     }
     params = json.dumps(params,ensure_ascii=False)
     json_object = json.loads(params)

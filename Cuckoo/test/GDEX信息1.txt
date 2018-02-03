@@ -187,3 +187,549 @@ HubOutbound
 2017-12-13 06:27:06
 AT1
 PickupInbound
+2017-11-29 18:50:00
+FD
+SuccessfullyDelivered
+2017-11-29 00:00:00
+DF
+DeliveryFailed
+2017-11-28 15:01:00
+DF
+DeliveryFailed
+2017-11-28 09:42:48
+AL2
+BranchOutboundinDeliveryBranch
+2017-11-27 08:37:20
+AL1
+BranchInboundinDeliveryBranch
+2017-11-26 01:20:38
+DT2
+HubOutbound
+2017-11-25 09:22:00
+AT1
+PickupInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-23 18:22:22
+DF
+DeliveryFailed
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-23 18:22:22
+DF
+DeliveryFailed
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-23 18:22:22
+DF
+DeliveryFailed
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-23 18:22:22
+DF
+DeliveryFailed
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-23 18:22:22
+DF
+DeliveryFailed
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-23 18:22:22
+DF
+DeliveryFailed
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-23 18:22:22
+DF
+DeliveryFailed
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-23 18:22:22
+DF
+DeliveryFailed
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-23 18:22:22
+DF
+DeliveryFailed
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-24 00:00:00
+DF
+DeliveryFailed
+2018-01-23 18:22:22
+DF
+DeliveryFailed
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+Hold for Reattempt Date
+Processinginpickupbranch
+2018-01-24 00:00:00
+Stop Delivery Instructed by HQ or Shipper
+Processinginpickupbranch
+2018-01-23 18:22:22
+Refuse to Accept - Consignee Cancel Order
+Processinginpickupbranch
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+Hold for Reattempt Date
+BK
+2018-01-24 00:00:00
+Stop Delivery Instructed by HQ or Shipper
+BA
+2018-01-23 18:22:22
+Refuse to Accept - Consignee Cancel Order
+BJ
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+BranchInboundinDeliveryBranch
+2018-01-25 12:08:50
+AT2
+Processinginpickupbranch
+2018-01-25 11:00:24
+AL1
+BranchInboundinDeliveryBranch
+2018-01-24 03:54:47
+AT2
+Processinginpickupbranch
+2018-01-24 00:00:00
+Hold for Reattempt Date
+BK
+2018-01-24 00:00:00
+Stop Delivery Instructed by HQ or Shipper
+BA
+2018-01-23 18:22:22
+Refuse to Accept - Consignee Cancel Order
+BJ
+2018-01-23 10:44:50
+AL2
+BranchOutboundinDeliveryBranch
+2018-01-22 07:39:49
+AL1
+BranchInboundinDeliveryBranch
+2018-01-20 08:05:33
+DT2
+HubOutbound
+2018-01-20 02:50:26
+DT1
+HubInbound
+2018-01-25 12:08:56
+AL1
+null
+2018-01-25 12:08:50
+AT2
+null
+2018-01-25 11:00:24
+AL1
+null
+2018-01-24 03:54:47
+AT2
+null
+2018-01-24 00:00:00
+Hold for Reattempt Date
+BK
+2018-01-24 00:00:00
+Stop Delivery Instructed by HQ or Shipper
+BA
+2018-01-23 18:22:22
+Refuse to Accept - Consignee Cancel Order
+BJ
+2018-01-23 10:44:50
+AL2
+null
+2018-01-22 07:39:49
+AL1
+null
+2018-01-20 08:05:33
+DT2
+null
+2018-01-20 02:50:26
+DT1
+null
+2018-01-25 12:08:56
+BranchInboundinDeliveryBranch
+AL1
+2018-01-25 12:08:50
+Processinginpickupbranch
+AT2
+2018-01-25 11:00:24
+BranchInboundinDeliveryBranch
+AL1
+2018-01-24 03:54:47
+Processinginpickupbranch
+AT2
+2018-01-24 00:00:00
+Hold for Reattempt Date
+BK
+2018-01-24 00:00:00
+Stop Delivery Instructed by HQ or Shipper
+BA
+2018-01-23 18:22:22
+Refuse to Accept - Consignee Cancel Order
+BJ
+2018-01-23 10:44:50
+BranchOutboundinDeliveryBranch
+AL2
+2018-01-22 07:39:49
+BranchInboundinDeliveryBranch
+AL1
+2018-01-20 08:05:33
+HubOutbound
+DT2
+2018-01-20 02:50:26
+HubInbound
+DT1

@@ -64,7 +64,7 @@ class Taobao_Img(object):
                 f.write("http:" + true_url + '\n')
                 # print "http:" + true_url
         cover_img_list_length = len(cover_img_list)
-        self.download_img(cover_img_list_length, cover_img_list, id, category_name, dir_name, "轮播图")
+        self.download_img(cover_img_list_length, cover_img_list, id, "轮播图", category_name, dir_name)
 
     def color_img(self, id, category_name, dir_name):
         xpath_str1 = '''//*//div[@class="tb-skin"]//dl/dd/ul/li/a[@style]/span/text()'''
@@ -78,7 +78,7 @@ class Taobao_Img(object):
             color_url_list.append(color_url.split("(")[1])
         length = len(color_url_list)
 
-        self.download_img(length, color_url_list, id, category_name, dir_name, "颜色图", color_list)
+        self.download_img(length, color_url_list, id, "颜色图", category_name, dir_name, color_list)
 
     def detail_img(self, id, category_name, dir_name):
         desc_url_obj = re.compile(r'''descUrl.*?('//(.*?)'|"//(.*?)")''', re.S)
@@ -104,7 +104,7 @@ class Taobao_Img(object):
             with open("img_url.txt", 'a') as f:
                 f.write("http:" + j + '\n')
                 # print "http:" + j
-        self.download_img(new_length, news_img_url_list, id, category_name, dir_name, "细节图")
+        self.download_img(new_length, news_img_url_list, id, "细节图", category_name, dir_name)
         # with open('img_url.txt', 'rb') as f:
         #     lines = f.readlines()
             # print '///////////////////////',len(lines)
@@ -116,8 +116,10 @@ class Taobao_Img(object):
             img_url = "http:" + img_url
             # img_url = lines[k].replace('\n', '')
             # cid = str(num) + id
-            # taobao_multimedia_datas/女装/女装连衣裙/img/name        /id+name
+            # taobao_multimedia_datas/女装/女装连衣裙1/id/img/name        /id+name
             path = "taobao_multimedia_datas/%s/%s/%s/img/%s/" % (category_name, dir_name, id, name)
+            print name
+            print path
             if (not (os.path.exists(path))):
                 os.makedirs(path)
             # 后缀名

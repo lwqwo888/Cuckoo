@@ -13,7 +13,7 @@ class SyncStatusThread(object):
         url = "http://jk.jet.co.id:22261/jant_szcuckoo_web/szcuckoo/trackingAction!tracking.action"
 
         params = {
-            "awb": 'JK0000000655'
+            "awb": 'JK0000009322'
         }
         params = json.dumps(params,ensure_ascii=False)
         json_object = json.loads(params)
@@ -93,6 +93,12 @@ class SyncStatusThread(object):
         # 快件将被退回
         elif self.str_process('Paket akan diretur') in yn_str:
             zh_str = 'Paket akan diretur'
+        # 问题件
+        elif self.str_process('Paket Gagal dikirim') in yn_str:
+            zh_str = 'Paket Gagal dikirim'
+        # 问题件
+        elif self.str_process('Pickup Failed') in yn_str:
+            zh_str = 'Pickup Failed'
         # 快件处理中
         elif self.str_process('Paket Gagal dipickup') in yn_str:
             zh_str = 'Paket Gagal dipickup'
