@@ -15,7 +15,7 @@ import os_path
 
 # from public.config import FILE_EXCEL
 
-def send(list_1,file_name):
+def send(list_1, file_name):
     workbook = xlwt.Workbook(encoding='utf-8')
     booksheet = workbook.add_sheet('Sheet 1', cell_overwrite_ok=True)
     try:

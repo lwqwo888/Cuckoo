@@ -29,7 +29,7 @@ def property_count(id):
         'user-agent': "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
     }
     html = requests.get(url, headers=headers).text
-    print html
+    # print html
     res = etree.HTML(html)
     # 统计有多少个需要用到的商品属性分类
     content = res.xpath('''//*//div[@class="tb-skin"]//dl//dd/ul[@data-property]''')
@@ -48,16 +48,19 @@ def property_count(id):
         # 分类名
         xpath_str = '''//*//div[@class="tb-skin"]//dl[%s]/dt//text()''' % str(x)
         content = res.xpath(xpath_str)
-        # for con in content:
-        #     print con
+        print len(content)
+        for con in content:
+            print con
         x += 1
 
     # 获取页面所有属性详细信息
     while i <= property_count:
         xpath_str = '''//*//dl[%s]//dd/ul/li//span//text()''' % str(i)
         size_list = res.xpath(xpath_str)
+        # print size_list
         big_list.append(size_list)
         big_list_len = len(big_list)
+        # print big_list[i-1]
         # print test
         # 尺码数量
         for size_l in size_list:
@@ -66,6 +69,12 @@ def property_count(id):
             # print size_l
         # 根据分类名数量，创建相应数量的列表
         i += 1
+    content_length = len(content)
+    y = 0
+    while y < content_length:
+        print content[1]
+        # data_property_list.append(content[y] + ': ' + big_list[y])
+        y += 1
     # 获取页面中所有pvs
     while j <= property_count:
         xpath_str = '''//*//dl[%s]//dd/ul/li/@data-value''' % str(j)
@@ -91,8 +100,8 @@ def property_count(id):
     #     print li2
     commodity_stock_list = [x for x in zip(Product_attributes_list, stock_list)]
     for product_attributes, sellableQuantity in commodity_stock_list:
-        print product_attributes,'的库存数量为：',sellableQuantity
-
+        # print product_attributes, '的库存数量为：', sellableQuantity
+        pass
 
 def url_process(url):
     res = re.compile(r'(\?|&)id=(\d+).*?', re.S)
@@ -106,7 +115,7 @@ if __name__ == '__main__':
 
     # url = raw_input('请输入您要查看的淘宝商品链接:')
     # '557200845972'
-    url = 'https://detail.tmall.com/item.htm?spm=608.7065813.ne.1.128f6324pjwY0E&id=557200845972&tracelog=jubuybigpic'
+    url = 'https://detail.tmall.com/item.htm?spm=608.7065813.ne.1.128f6324pjwY0E&id=521310943964&tracelog=jubuybigpic'
     id = url_process(url)
     # print id
     property_count(id)

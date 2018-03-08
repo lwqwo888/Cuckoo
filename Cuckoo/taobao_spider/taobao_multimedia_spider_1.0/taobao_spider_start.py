@@ -1,4 +1,10 @@
 # coding=utf-8
+# version: 1.1
+# 脚本功能: 淘宝商品数据获取程序启动器
+# 参数: taobaourl.txt (存放所需获取的淘宝商品链接,每行只能存放一个商品链接,链接的最后必须添加'*分类名*商品名'格式,例子如下)
+# 例: https://item.taobao.com/item.htm?id=545146161124*女装*女装连衣裙
+# date : 2018-02-11
+# Creator: lwq
 import os
 import re
 import time
@@ -8,12 +14,15 @@ from collections import Counter
 from multiprocessing import Pool
 from taobao_img_spider import Taobao_Img
 from taobao_videos_spider import Taobao_Videos
+from taobao_info_entrance import property_count
+from taobao_reviews_sipder import Taobao_Comment
 import sys
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
+# 链接去重
 def go_repeat():
     with open('taobaourl.txt', 'rb') as f:
         lines = f.readlines()
@@ -45,9 +54,9 @@ def go_repeat():
     # print max_list
     # print repeat_dict
     print '共有%s个id重复, 如需查看重复ID请打开"重复商品ID.txt"' % length
-    for i in repeat_dict:
+    for repeat_id in repeat_dict:
         with open('重复商品ID.txt', 'a') as f:
-            f.write(i + " ID出现次数: " + str(repeat_dict[i]) + '\n')
+            f.write(repeat_id + " ID出现次数: " + str(repeat_dict[repeat_id]) + '\n')
 
     i = 0
     # 用来存放重复的索引的列表
@@ -77,14 +86,7 @@ def go_repeat():
             f.write(j)
     print '---------------------------------------------------'
     return new_lines
-    # for i in new_lines:
 
-    # url_list_length = len(new_lines)
-    # print "去重前url数量:%s" % url_list_length
-    # news_img_url_list = list(set(new_lines))
-    # news_img_url_list.sort()
-    # new_length = len(news_img_url_list)
-    # print '去重后url数量:', new_length
 
 def url_process(url):
     res = re.compile(r'(\?|&)id=(\d+).*?', re.S)
@@ -96,6 +98,7 @@ if __name__ == '__main__':
     start = time.time()
     ti = Taobao_Img()
     tv = Taobao_Videos()
+    tc = Taobao_Comment()
     start = time.time()
     new_lines = go_repeat()
     new_length = len(new_lines)
@@ -109,20 +112,23 @@ if __name__ == '__main__':
         print category_name
         print dir_name
         # id = "546019442312"
-        print "[INFO]开始抓取...................................."
+        print "[INFO]:开始抓取...................................."
+        property_count(id, category_name, dir_name)
+        # tc.comment(id, category_name, dir_name)
+        print "[INFO]: %s商品所有评论内容已抓取完成！！\n" % (id)
         ti.page_data(id)
         ti.turn_img(id, category_name, dir_name)
         ti.color_img(id, category_name, dir_name)
         ti.detail_img(id, category_name, dir_name)
-        print "%s商品所有图片抓取完成！！！！！！！！\n" % id
+        print "[INFO]:%s商品所有图片抓取完成！！！！！！！！\n" % id
         tv.video(id, category_name, dir_name)
         i += 1
-        print "第%s件商品 已完成抓取!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n" % str(i)
+        print "[INFO]:第%s件商品 已完成抓取!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n" % str(i)
 
 
     end = time.time()
     time_s = end-start
-    print "所有抓取任务已完成！共计用时%s秒\n\n" % time_s
+    print "[INFO]:所有抓取任务已完成！共计用时%s秒\n\n" % time_s
 
 
 

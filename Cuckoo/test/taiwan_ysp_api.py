@@ -5,7 +5,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-url = 'http://220.132.209.89/API/esp.php?A=esp&C=esp1234&S=58925624124874'
+url = 'http://220.132.209.89/API/esp.php?A=esp&C=esp1234&S=59471624124874'
 res = requests.get(url).text
 print res
 time_list = []

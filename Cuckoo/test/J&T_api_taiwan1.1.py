@@ -13,11 +13,11 @@ class SyncStatusThread(object):
         url = "http://jk.jet.co.id:22261/jant_szcuckoo_web/szcuckoo/trackingAction!tracking.action"
 
         params = {
-            "awb": 'JK0000009322'
+            "awb": 'JK0000011444'
         }
         params = json.dumps(params,ensure_ascii=False)
         json_object = json.loads(params)
-        res = requests.post(url,data=params).content.decode('unicode-escape')
+        res = requests.post(url, data=params).content.decode('unicode-escape')
         all_status = re.compile(r'"status":"(.*?)"', re.S)
         all_time = re.compile(r'"date_time":"(.*?)"', re.S)
         status_list = all_status.findall(res)

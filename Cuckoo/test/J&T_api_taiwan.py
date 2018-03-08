@@ -32,12 +32,12 @@ def main():
     url = "http://jk.jet.co.id:22261/jant_szcuckoo_web/szcuckoo/trackingAction!tracking.action"
 
     params = {
-        "awb": "JK0000009322"
+        "awb": "1011374515"
     }
     params = json.dumps(params,ensure_ascii=False)
     json_object = json.loads(params)
     res = requests.post(url,data=params).content.decode('unicode-escape')
-    # print res
+    print res
     all_status = re.compile(r'"status":"(.*?)"', re.S)
     all_time = re.compile(r'"date_time":"(.*?)"', re.S)
     status_list = all_status.findall(res)

@@ -7,10 +7,10 @@ from lxml import etree
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# 测试环境地址
-url = "http://stg.timesoms.com/api/orders/" + result['track']
+# 正式环境地址
+url = "http://www.timesoms.com/api/orders/" + result['track']
 headers = {
-    # 测试环境headers
+    # 正式环境headers
     'Authorization': "Bearer sbv99QoVncfr4twUlpByLwGLNKMMfLlSKtU0DIZYGFl85o5SlWeMvsShlIvl"
 }
 
@@ -18,7 +18,7 @@ res = requests.get(url, headers=headers).content
 # print res
 all_data_obj = re.compile(r'"milestones":{(.*?)}', re.S)
 all_data_list = all_data_obj.findall(res)
-status_id = send_date(status, logistics_time, track, summary_status, '(250, 256)', '').acquire_date_id()
+status_id = send_date(status, logistics_time, track, summary_status, '(164)', '').acquire_date_id()
 
 if all_data_list:
     data_info = all_data_list[0].split(',')
@@ -29,16 +29,16 @@ if all_data_list:
             logistics_time = status_info.groups()[1]
             status = status_info.groups()[0]
             tran_status_label = status
-            # tran_status = send_date(status, logistics_time, track, summary_status, '(250)', '').acquire_date()
-            # print tran_status
-            # if tran_status:
-            #     for tran_status_item in tran_status:
-            #         if tran_status_item['status_label'].strip() in status:
-            #             tran_status_label = tran_status_item['status_label']
-            #             print tran_status_label
-            #             break
-            #         else:
-            #             tran_status_label = status
+            tran_status = send_date(status, logistics_time, track, summary_status, '(164)', '').acquire_date()
+            print tran_status
+            if tran_status:
+                for tran_status_item in tran_status:
+                    if tran_status_item['status_label'].strip() in status:
+                        tran_status_label = tran_status_item['status_label']
+                        print tran_status_label
+                        break
+                    else:
+                        tran_status_label = status
             # send_date(status, logistics_time, track, ' ', str(status_id[0]['id_shipping']),tran_status_label).insert_date()
             # 以下2行测试使用******************************************************************
             print 'time:-------:', logistics_time

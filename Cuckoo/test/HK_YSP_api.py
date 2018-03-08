@@ -13,7 +13,7 @@ class SyncStatusThread(object):
                 789641730707
         '''
         # url = 'http://119.23.28.96/cgi-bin/GInfo.dll?EmsApiTrack&cno=' + track_number
-        url = 'http://119.23.28.96/cgi-bin/GInfo.dll?EmsApiTrack&cno=789641730707'
+        url = 'http://119.23.28.96/cgi-bin/GInfo.dll?EmsApiTrack&cno=789714899316'
         html = requests.get(url).content.decode('gbk').encode('utf-8')
         print html
         all_status = re.compile(r'<INFO>(.*?)</INFO>', re.S)
@@ -24,7 +24,12 @@ class SyncStatusThread(object):
         if time_list:
             ysp_list = [i for i in zip(time_list, status_list)]
             for i, j in ysp_list:
-                status = j
+                res = re.compile(r'^(\d+)$', re.S)
+                id = res.findall(j)
+                if id:
+                    status = "已签收"
+                else:
+                    status = j
                 if len(i) > 10:
                     logistics_time = i + ':00'
                 else:
@@ -41,7 +46,7 @@ class SyncStatusThread(object):
             with open("HK_YSP信息1.txt", "a") as f:
                 f.write(logistics_time + '\n' + status + '\n' + ran_status_label + '\n')
 
-    def control(self,original_str):
+    def control(self, original_str):
         print 'original_str : ', original_str
         # 派件
         if '正在派送途中' in original_str:

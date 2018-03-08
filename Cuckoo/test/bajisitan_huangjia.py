@@ -9,8 +9,12 @@ sys.setdefaultencoding('utf-8')
 
 url = 'http://www.pfcexpress.com/webservice/APIWebService.asmx?wsdl'
 client = Client(url)
-Orderid = result['track']
-secretkey = '434a2ed2-8056-4579-9a47-cfaa48676ffb80000'
+# Orderid = result['track']
+Orderid = 'HH000637'
+# 测试
+# secretkey = '434a2ed2-8056-4579-9a47-cfaa48676ffb80000'
+# 生产
+secretkey = "7c2ada75-fb9e-48e6-9ad9-a45dd59345e194440"
 res = client.service.getOrder_Track(Orderid, secretkey)
 # status_id = send_date(status, logistics_time, track, '', '(228)','').acquire_date_id()
 

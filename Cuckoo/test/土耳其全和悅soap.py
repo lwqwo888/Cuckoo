@@ -20,7 +20,7 @@ callService_info = client.factory.create("callService")
 callService_info.appToken = "604b2394a504b593ef2e806737ac9b06"
 callService_info.appKey ="604b2394a504b593ef2e806737ac9b068674992310621bebc6e9326441dd4786"
 callService_info.service = "getCargoTrack"
-callService_info.paramsJson = 'ALJAE7338000010YQ'
+callService_info.paramsJson = 'ALJBH8024000001YQ'
 
 
 result = client.service

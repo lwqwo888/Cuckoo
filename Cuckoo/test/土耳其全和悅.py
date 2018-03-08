@@ -17,7 +17,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
+#  % result['track']
 url = "http://tms.alljoylogistics.com/default/svc/web-service"
 
 params = '''<?xml version="1.0" encoding="UTF-8"?>
@@ -31,7 +31,8 @@ params = '''<?xml version="1.0" encoding="UTF-8"?>
     </ns1:callService>
     </SOAP-ENV:Body>
     </SOAP-ENV:Envelope>
-    '''%"ALJTR8017000210YQ"
+    '''%"ALJBH8024000001YQ"
+
 
 response = requests.post(url, data=params).text
 print response
