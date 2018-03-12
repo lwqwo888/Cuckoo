@@ -1,0 +1,24 @@
+    'redis_list' => array(
+        'normal' => array(
+            'host' => '10.4.3.125',
+            'port' => 6405,
+            'db' => 6
+        ),
+    'redis_list' => array(
+        'normal' => array(
+            'host' => '127.0.0.1',
+            'port' => 6379,
+            'db' => 2
+        ),
+    'redis_list' => array(
+        'normal' => array(
+            'host' => '127.0.0.1',
+            'port' => 6379,
+            'db' => 16
+        ),
+    'redis_list' => array(
+        'normal' => array(
+            'host' => '127.0.0.1',
+            'port' => 6379,
+            'db' => 8
+        ),

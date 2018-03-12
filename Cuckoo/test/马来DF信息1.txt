@@ -1,0 +1,142 @@
+2017-12-30 11:43:27
+Arrived AT 深圳站
+2017-12-30 14:30:15
+In Transit AT 深圳站
+2018-01-03 22:00:00
+Departure
+2018-01-04 15:29:00
+Departure
+2018-01-04 18:41:00
+Departure
+2018-01-05 10:12:00
+Delivering
+2018-01-05 19:06:00
+Undelivered(unknown)
+2018-12-04 16:23
+Shipping
+2018-12-04 17:05
+Departure
+2018-12-04 19:15
+Departure
+2018-12-05 10:34
+Arrival
+2018-12-11 20:07
+Delivered
+
+未上线
+2018-01-04 15:29
+Shipping
+2018-01-03 22:00
+Departure
+2018-01-04 15:29
+Departure
+2018-01-04 18:41
+Departure
+2018-01-05 10:12
+Delivering
+2018-01-05 19:06
+Undelivered(unknown)
+2018-01-08 14:00
+Delivered
+2018-01-04 15:29
+Shipping
+2018-01-03 22:00
+Departure
+2018-01-04 15:29
+Departure
+2018-01-04 18:41
+Departure
+2018-01-05 10:12
+Delivering
+2018-01-05 19:06
+Undelivered(unknown)
+2018-01-08 14:00
+Delivered
+2018-01-04 15:29
+Shipping
+2018-01-03 22:00
+Departure
+2018-01-04 15:29
+Departure
+2018-01-04 18:41
+Departure
+2018-01-05 10:12
+Delivering
+2018-01-05 19:06
+Undelivered(unknown)
+2018-01-08 14:00
+Delivered
+2017-12-04 16:32
+Shipping
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-04 09:15
+Returned
+2018-01-04 15:29
+Shipping
+2018-01-03 22:00
+Departure
+2018-01-04 15:29
+Departure
+2018-01-04 18:41
+Departure
+2018-01-05 10:12
+Delivering
+2018-01-05 19:06
+Undelivered(unknown)
+2018-01-08 14:00
+Delivered
+2017-12-04 16:32
+Shipping
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-03 14:15
+Departure
+2017-01-04 09:15
+Returned
+2017-12-04 16:32
+Shipping
+2018-01-03 14:15
+Departure
+2018-01-03 14:15
+Departure
+2018-01-03 14:15
+Departure
+2018-01-03 14:15
+Departure
+2018-01-03 14:15
+Departure
+2018-01-03 14:15
+Departure
+2018-01-03 14:15
+Departure
+2018-01-03 14:15
+Departure
+2018-01-04 09:15
+Returned
