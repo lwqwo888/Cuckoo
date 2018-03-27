@@ -23,7 +23,7 @@ class Skuid_Color(object):
         html = requests.get(url, headers=headers).text
         stock_list = []
         for pvs in pvs_list:
-            res = re.compile(r'%s.*?"sellableQuantity":(.*?),'%pvs, re.S)
+            res = re.compile(r'%s.*?"sellableQuantity":(.*?),' % pvs, re.S)
             single_stock = res.findall(html)
             if single_stock:
                 stock_list.append(''.join(single_stock))

@@ -1,4 +1,5 @@
 # coding=utf8
+import Queue
 import re
 import requests
 import datetime
@@ -7,15 +8,16 @@ from lxml import etree
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+a = Queue.Queue()
 # www.timesoms.com
 # url = "http://stg.timesoms.com/api/orders/40002002337"
-url = "http://www.timesoms.com/api/orders/40002002436"
+url = "http://www.timesoms.com/api/orders/40002204411"
 headers = {
     'Authorization': "Bearer sbv99QoVncfr4twUlpByLwGLNKMMfLlSKtU0DIZYGFl85o5SlWeMvsShlIvl"
 }
 
 res = requests.get(url, headers=headers).content
-# print res
+print res
 all_data_obj = re.compile(r'"milestones":{(.*?)}', re.S)
 all_data_list = all_data_obj.findall(res)
 if all_data_list:

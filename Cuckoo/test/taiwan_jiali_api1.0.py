@@ -30,15 +30,15 @@ if all_data_list:
             status = status_info.groups()[0]
             tran_status_label = status
             tran_status = send_date(status, logistics_time, track, summary_status, '(164)', '').acquire_date()
-            print tran_status
-            if tran_status:
-                for tran_status_item in tran_status:
-                    if tran_status_item['status_label'].strip() in status:
-                        tran_status_label = tran_status_item['status_label']
-                        print tran_status_label
-                        break
-                    else:
-                        tran_status_label = status
+            # print tran_status
+            # if tran_status:
+            #     for tran_status_item in tran_status:
+            #         if tran_status_item['status_label'].strip() in status:
+            #             tran_status_label = tran_status_item['status_label']
+            #             print tran_status_label
+            #             break
+            #         else:
+            #             tran_status_label = status
             # send_date(status, logistics_time, track, ' ', str(status_id[0]['id_shipping']),tran_status_label).insert_date()
             # 以下2行测试使用******************************************************************
             print 'time:-------:', logistics_time
