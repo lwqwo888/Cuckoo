@@ -5,7 +5,11 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+<<<<<<< HEAD
 url = 'http://220.132.209.89/API/esp.php?A=esp&C=esp1234&S=39526424124874'
+=======
+url = 'http://220.132.209.89/API/esp.php?A=esp&C=esp1234&S=59471624124874'
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
 res = requests.get(url).text
 print res
 time_list = []

@@ -32,7 +32,11 @@ def main():
     url = "http://jk.jet.co.id:22261/jant_szcuckoo_web/szcuckoo/trackingAction!tracking.action"
 
     params = {
+<<<<<<< HEAD
         "awb": "JK0000011004"
+=======
+        "awb": "1011374515"
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
     }
     params = json.dumps(params,ensure_ascii=False)
     json_object = json.loads(params)

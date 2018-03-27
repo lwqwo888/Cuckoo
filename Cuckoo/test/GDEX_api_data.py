@@ -69,7 +69,11 @@ def control_df(key):
 # url = 'http://uat.gdexapi.com/api/PreAlert/LatestDeliveryStatus/GdexCN/8715022643'
 # url = 'http://uat.gdexapi.com/api/key/PreAlert/DeliveryStatus/8715022643'
 # url = 'https://www.gdexapi.com/api/key/PreAlert/DeliveryStatus/8715088314'# 8720877432 8715025395  8715051450  8715023881  http://edi.gdexapi.com/
+<<<<<<< HEAD
 url = 'http://edi.gdexapi.com/api/key/PreAlert/DeliveryStatus/8715724150'
+=======
+url = 'http://edi.gdexapi.com/api/key/PreAlert/DeliveryStatus/8715474246'
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
 # url = 'http://uat.gdexapi.com/api/key/PreAlert/DeliveryStatus/4508815662'
 # url = 'http://uat.gdexapi.com/api/key/PreAlert/DeliveryStatus/MY75002523704'
 print url

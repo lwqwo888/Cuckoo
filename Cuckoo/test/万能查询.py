@@ -4,7 +4,10 @@ import re
 import json
 import time
 import random
+<<<<<<< HEAD
 import urllib2
+=======
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
 import datetime
 import requests
 import linecache
@@ -16,6 +19,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
+<<<<<<< HEAD
 def month_to_number(argument):
     switcher = {
         'Jan': "1",
@@ -71,6 +75,50 @@ with open('万能查询运单号文档.txt', 'rb') as f:
                 logistics_time = year + '-' + month + '-' + day + ' ' + hour
                 i += 1
                 print logistics_time
+=======
+s_time = time.time()
+status_big_list = []
+with open('运单号文档.txt', 'rb') as f:
+    lines = f.readlines()
+
+
+    for num in lines:
+        try:
+            num = num.split()[0].replace('\n', '').replace('\r', '')
+            url = 'http://stg.timesoms.com/api/orders/' + num
+            headers = {
+                "Authorization": "Bearer sbv99QoVncfr4twUlpByLwGLNKMMfLlSKtU0DIZYGFl85o5SlWeMvsShlIvl"
+            }
+            params = {
+                'token': 'fJ83StsDzZPI50N0yksVUdaBVZIxR3FZqS4pKmG3yK2YQBVGQC0Pz7vNRuz0'
+            }
+            res = requests.get(url, headers=headers, params=params).text
+            print res
+            taiguo_keys = json.loads(res.text, object_pairs_hook=OrderedDict)['milestones'].keys()
+            taiguo_values = json.loads(res.text, object_pairs_hook=OrderedDict)['milestones'].values()
+
+            i = 0
+
+            for taiguo_key in taiguo_keys:
+                if not taiguo_values[i]:
+                    taiguo_values[i] = ''
+                i = i + 1
+                info = "%s   *%s  %s" % (num, logistics_time, status)
+                print info
+
+
+            else:
+                status = '未找到'
+                logistics_time = ''
+                tran_status_label = status
+                # 以下2行测试使用******************************************************************
+                print logistics_time + '\n' + status + '\n' + tran_status_label + '\n'
+
+        except Exception as e:
+            print (e)
+        print '-'*60
+
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
 e_time = time.time()
 d_time = e_time - s_time
 print '完成! 用时%s' % d_time

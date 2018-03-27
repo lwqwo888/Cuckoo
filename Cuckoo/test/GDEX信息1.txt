@@ -1006,6 +1006,7 @@ DT2
 2018-01-13 09:16:04
 PickupInbound
 AT1
+<<<<<<< HEAD
 2018-03-08 14:43:42
 SuccessfullyDelivered
 FD
@@ -1102,3 +1103,5 @@ AT1
 2018-03-02 05:00:50
 PickupInbound
 AT1
+=======
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca

@@ -84,9 +84,12 @@ class SyncStatusThread(object):
         # 疑难件
         elif self.str_process('Paket disimpan di gudang J&T') in yn_str:
             zh_str = 'Paket disimpan di gudang J&T'
+<<<<<<< HEAD
         # 快件已被退回
         elif self.str_process('Package returned to seller') in yn_str:
             zh_str = 'Package returned to seller'
+=======
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
         # 装袋
         elif self.str_process('Pack') in yn_str:
             zh_str = 'Pack'
@@ -105,6 +108,12 @@ class SyncStatusThread(object):
         # 快件处理中
         elif self.str_process('Paket Gagal dipickup') in yn_str:
             zh_str = 'Paket Gagal dipickup'
+<<<<<<< HEAD
+=======
+        # 快件已被退回
+        elif self.str_process('Package returned to seller') in yn_str:
+            zh_str = 'Package returned to seller'
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
         # # 运单无效
         # elif str_process('Expired AWB') in yn_str:
         #     zh_str = '运单无效'

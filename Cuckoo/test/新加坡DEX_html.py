@@ -6,7 +6,11 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+<<<<<<< HEAD
 url = 'http://47.52.146.142/podtrack/xml.aspx?hawb=66630768470'
+=======
+url = 'http://47.52.146.142/podtrack/xml.aspx?hawb=' + result['track']
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
 
 res = requests.get(url).content
 # print res
@@ -16,6 +20,7 @@ all_status = re.compile(r'<STATUS>(.*?)</STATUS>', re.S)
 date_list = all_date.findall(res)
 time_list = all_time.findall(res)
 status_list = all_status.findall(res)
+<<<<<<< HEAD
 # status_id = send_date(status, logistics_time, track, summary_status, '(222,224)', '').acquire_date_id()
 if time_list:
     dex_list = [i for i in zip(date_list, time_list, status_list)]
@@ -23,6 +28,12 @@ if time_list:
         print date
         status = status.decode("gbk").encode("utf-8")
         date = date[:4] + "-" + date[4:6] + "-" + date[6:]
+=======
+status_id = send_date(status, logistics_time, track, summary_status, '(222,224)', '').acquire_date_id()
+if time_list:
+    dex_list = [i for i in zip(date_list, time_list, status_list)]
+    for date, time, status in dex_list:
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
         logistics_time = date + ' ' + time + ':00'
         # print logistics_time
         # print status
@@ -36,9 +47,15 @@ if time_list:
         #             break
         #         else:
         #             tran_status_label = status
+<<<<<<< HEAD
         # send_date(status, logistics_time, track, ' ', str(status_id[0]['id_shipping']),tran_status_label).insert_date()
         # 以下1行测试使用******************************************************************
         print 'time:---------------: ', logistics_time + '\n' + 'status:---------------: ', status + '\n' + 'tran:---------------: '
+=======
+        send_date(status, logistics_time, track, ' ', str(status_id[0]['id_shipping']),tran_status_label).insert_date()
+        # 以下1行测试使用******************************************************************
+        print 'time:---------------: ', logistics_time + '\n' + 'status:---------------: ', status + '\n' + 'tran:---------------: ', tran_status_label + '\n'
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
 
 else:
     status = '未找到'
@@ -46,6 +63,10 @@ else:
     tran_status_label = status
     # print logistics_time
     # print status
+<<<<<<< HEAD
     # send_date(status, logistics_time, track, ' ', str(status_id[0]['id_shipping']), tran_status_label).insert_date()
+=======
+    send_date(status, logistics_time, track, ' ', str(status_id[0]['id_shipping']), tran_status_label).insert_date()
+>>>>>>> b38c728aaae98a3d51c84dbedb98d7d8761193ca
     # 以下1行测试使用******************************************************************
     print 'time:---------------: ', logistics_time + '\n' + 'status:---------------: ', status + '\n' + 'tran:---------------: ', tran_status_label + '\n'
